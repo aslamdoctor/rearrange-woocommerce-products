@@ -1,7 +1,7 @@
 # Todo
 
-- [ ] Use laravel mix
-- [ ] Enqueue JS and CSS
+- [x] Use laravel mix
+- [x] Enqueue JS and CSS
 - [ ] Page to rearrange all products
 - [ ] Page to rearrange products based on selected category
 - [ ] Hook to add "Rearrange Products" link on categories action links

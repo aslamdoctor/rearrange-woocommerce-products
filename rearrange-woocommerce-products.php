@@ -39,7 +39,28 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-// define reusable paths for plugin globally
+/**
+ * define reusable paths for plugin globally
+ */
 define('RWPP_LOCATION', dirname(__FILE__));
 define('RWPP_LOCATION_URL', plugins_url('', __FILE__));
 
+/**
+ * Enqueue CSS and JS files
+ */
+add_action( 'admin_enqueue_scripts', 'rwpp_enqueue' );
+function rwpp_enqueue($hook) {
+	/* if ( 'product_page_rwpp-page' != $hook ) {
+		return;
+	} */
+
+	// Stylesheets
+	wp_register_style('rwpp_app_css', (RWPP_LOCATION_URL."/dist/css/main.css"), false);
+	wp_enqueue_style('rwpp_app_css');
+
+	// Javascripts
+	wp_register_script('rwpp_app_js', (RWPP_LOCATION_URL."/dist/js/main.js"), array(), false, true);
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('jquery-ui-sortable');
+	wp_enqueue_script('rwpp_app_js');
+}
