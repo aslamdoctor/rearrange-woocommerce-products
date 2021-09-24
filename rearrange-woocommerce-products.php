@@ -61,6 +61,7 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 			register_deactivation_hook( RWPP_LOCATION, array( $this, 'deactivate' ) );
 			add_action( 'admin_init', array( $this, 'check_required_plugin') );
 			add_action( 'admin_enqueue_scripts', array($this, 'enqueue_assets') );
+			add_action('admin_menu', array($this, 'register_admin_menus') );
 		}
 
 		/**
@@ -76,10 +77,10 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		/**
 		 * Enqueue CSS and JS files
 		 */
-		public static function enqueue_assets($hook) {
-			/* if ( 'product_page_rwpp-page' != $hook ) {
+		public function enqueue_assets($hook) {
+			if ( 'product_page_rwpp-page' != $hook ) {
 				return;
-			} */
+			}
 
 			// Stylesheets
 			wp_register_style('rwpp_css', (RWPP_LOCATION_URL."/dist/css/main.css"), false);
@@ -93,10 +94,10 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		/**
 		 * Check if required plugin is available
 		 */
-		public static function check_required_plugin(){
+		public function check_required_plugin(){
 			// check if woocommerce is installed
 			if ( is_admin() && current_user_can( 'activate_plugins' ) && !class_exists( 'WooCommerce' ) ) {
-        add_action( 'admin_notices', array( 'ReWooProducts', 'plugin_notice') );
+        add_action( 'admin_notices', array( $this, 'plugin_notice') );
 
         deactivate_plugins( RWPP_BASENAME ); 
 
@@ -107,8 +108,44 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		}
 
 		// show plugin activation notice
-		public static function plugin_notice(){
+		public function plugin_notice(){
 			_e('<div class="error"><p>Please activate Woocommerce plugin before using <strong>Rearrange Woocommerce Products</strong> plugin.</p></div>', 'rwpp');
+		}
+
+		/**
+		 * Register Admin Menus
+		 */
+		public function register_admin_menus() {
+			if( is_user_logged_in() ) {
+				$user = wp_get_current_user();
+				$role = ( array ) $user->roles;
+				
+				if(in_array('administrator', $role)){
+					$this->add_pages('manage_options');
+				}
+				else if(in_array('shop_manager', $role)){
+					$this->add_pages('shop_manager');
+				}
+				else if(current_user_can('manage_woocommerce')){
+					$this->add_pages('shop_manager');
+				}
+			}
+		}
+
+		public function add_pages($role){
+			add_submenu_page( 
+				'edit.php?post_type=product', 
+				__('Rearrange Products', 'rwpp'), 
+				__('Rearrange Products', 'rwpp'), 
+				$role, 
+				'rwpp-page', 
+				array($this, 'rwpp_callback')
+			);   
+		}
+
+		public function rwpp_callback() {
+			include "inc/helpers.php";
+			include "views/rearrange_all_products.php";
 		}
 	}
 
