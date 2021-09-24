@@ -5,7 +5,7 @@
 Plugin Name: Rearrange Woocommerce Products	- V2
 Plugin URI: https://wordpress.org/plugins/rearrange-woocommerce-products/
 Description: a plugin to Rearrange Woocommerce Products listed on the Shop page
-Version: 2.3.6
+Version: 3.0.0
 Author: Aslam Doctor
 Author URI: https://aslamdoctor.com/	
 Developer: Aslam Doctor

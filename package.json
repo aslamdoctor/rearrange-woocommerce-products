@@ -1,0 +1,28 @@
+{
+  "name": "rearrange-woocommerce-products-v2",
+  "version": "3.0.0",
+  "description": "Rearrange Woocommerce Products Plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aslamdoctor/rearrange-woocommerce-products.git"
+  },
+  "keywords": [
+    "woocommerce",
+    "wordpress",
+    "plugin",
+    "rearrange"
+  ],
+  "author": "Aslam Doctor",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/aslamdoctor/rearrange-woocommerce-products/issues"
+  },
+  "homepage": "https://github.com/aslamdoctor/rearrange-woocommerce-products#readme",
+  "devDependencies": {
+    "laravel-mix": "^6.0.31"
+  }
+}
