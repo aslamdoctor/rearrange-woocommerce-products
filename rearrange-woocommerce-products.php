@@ -44,23 +44,73 @@ if (!defined('ABSPATH')) {
  */
 define('RWPP_LOCATION', dirname(__FILE__));
 define('RWPP_LOCATION_URL', plugins_url('', __FILE__));
+define('RWPP_BASENAME', plugin_basename( __FILE__ ));
 
-/**
- * Enqueue CSS and JS files
- */
-add_action( 'admin_enqueue_scripts', 'rwpp_enqueue' );
-function rwpp_enqueue($hook) {
-	/* if ( 'product_page_rwpp-page' != $hook ) {
-		return;
-	} */
+if ( ! class_exists( 'ReWooProducts' ) ) {
+	class ReWooProducts{
+		public function __construct()
+		{
+			$this->setup_actions();
+		}
 
-	// Stylesheets
-	wp_register_style('rwpp_app_css', (RWPP_LOCATION_URL."/dist/css/main.css"), false);
-	wp_enqueue_style('rwpp_app_css');
+		/**
+		 * Setup Hooks
+		 */
+		public function setup_actions(){
+			register_activation_hook( RWPP_LOCATION, array( $this, 'activate' ) );
+			register_deactivation_hook( RWPP_LOCATION, array( $this, 'deactivate' ) );
+			add_action( 'admin_init', array( $this, 'check_required_plugin') );
+			add_action( 'admin_enqueue_scripts', array($this, 'enqueue_assets') );
+		}
 
-	// Javascripts
-	wp_register_script('rwpp_app_js', (RWPP_LOCATION_URL."/dist/js/main.js"), array(), false, true);
-	wp_enqueue_script('jquery');
-	wp_enqueue_script('jquery-ui-sortable');
-	wp_enqueue_script('rwpp_app_js');
+		/**
+		 * Activate plugin callback
+		 */
+		public static function activate(){}
+
+		/**
+		 * Dectivate plugin callback
+		 */
+		public static function dectivate(){}
+
+		/**
+		 * Enqueue CSS and JS files
+		 */
+		public static function enqueue_assets($hook) {
+			/* if ( 'product_page_rwpp-page' != $hook ) {
+				return;
+			} */
+
+			// Stylesheets
+			wp_register_style('rwpp_css', (RWPP_LOCATION_URL."/dist/css/main.css"), false);
+			wp_enqueue_style('rwpp_css');
+
+			// Javascripts
+			wp_register_script('rwpp_js', (RWPP_LOCATION_URL."/dist/js/main.js"), array('jquery', 'jquery-ui-sortable'), false, true);
+			wp_enqueue_script('rwpp_js');
+		}
+
+		/**
+		 * Check if required plugin is available
+		 */
+		public static function check_required_plugin(){
+			// check if woocommerce is installed
+			if ( is_admin() && current_user_can( 'activate_plugins' ) && !class_exists( 'WooCommerce' ) ) {
+        add_action( 'admin_notices', array( 'ReWooProducts', 'plugin_notice') );
+
+        deactivate_plugins( RWPP_BASENAME ); 
+
+        if ( isset( $_GET['activate'] ) ) {
+            unset( $_GET['activate'] );
+        }
+    	}
+		}
+
+		// show plugin activation notice
+		public static function plugin_notice(){
+			_e('<div class="error"><p>Please activate Woocommerce plugin before using <strong>Rearrange Woocommerce Products</strong> plugin.</p></div>', 'rwpp');
+		}
+	}
+
+	$rwpp_plugin_obj = new ReWooProducts();
 }
