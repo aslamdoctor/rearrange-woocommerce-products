@@ -61,7 +61,7 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 			register_deactivation_hook( RWPP_LOCATION, array( $this, 'deactivate' ) );
 			add_action( 'admin_init', array( $this, 'check_required_plugin') );
 			add_action( 'admin_enqueue_scripts', array($this, 'enqueue_assets') );
-			add_action('admin_menu', array($this, 'register_admin_menus') );
+			add_action( 'admin_menu', array($this, 'register_admin_menus') );
 		}
 
 		/**

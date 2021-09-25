@@ -2,8 +2,8 @@ let mix = require("laravel-mix");
 
 mix.webpackConfig({
   externals: {
-    jquery: "jQuery",
-  },
+    jquery: "jQuery"
+  }
 });
 
 mix
@@ -12,7 +12,7 @@ mix
   .sourceMaps()
   .options({
     processCssUrls: false,
-    postCss: [require("autoprefixer")],
+    postCss: [require("autoprefixer")]
   })
   .sourceMaps(true, "source-map")
   .setPublicPath("dist");

@@ -1,0 +1,79 @@
+.rwpp-product {
+  background: #fff;
+  cursor: move;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  max-width: 700px;
+  margin-bottom: 10px;
+  .rwpp-product-main {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .rwpp-product-title {
+      font-weight: 500;
+      flex: 1;
+      padding-right: 30px;
+    }
+    span.rwpp-product-movement {
+      display: inline-block;
+      width: 155px;
+      span.dashicons {
+        cursor: pointer;
+        border: 1px solid #4e4e4e;
+        padding: 3px;
+        opacity: 0.3;
+        border-radius: 3px;
+
+        &:hover {
+          background: #000;
+          color: #fff;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .rwpp-product-info {
+    background-color: #f5f3f3;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    display: none;
+
+    img {
+      width: 120px;
+      height: auto;
+    }
+    .rwpp-product-details {
+      flex: 1;
+      padding-left: 15px;
+      .rwpp-product-name {
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+      .rwpp-product-sku {
+        margin-bottom: 5px;
+      }
+      .rwpp-product-price {
+      }
+      .button {
+        margin-top: 10px;
+        margin-right: 5px;
+      }
+    }
+    &.active {
+      display: flex;
+    }
+  }
+
+  &.ghost {
+    background-color: #000;
+    color: #fff;
+  }
+
+  &:hover {
+    border: 1px solid #adadad;
+  }
+}
