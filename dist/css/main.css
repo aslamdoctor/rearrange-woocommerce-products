@@ -10,6 +10,9 @@
 #rwpp-container .notice.top-notice {
   margin-bottom: 20px;
 }
+#rwpp-container #rwpp_product_category {
+  margin-bottom: 30px;
+}
 
 #rwpp-products-list {
   position: relative;

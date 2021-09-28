@@ -8,37 +8,18 @@
   </ul>
 </div>
 
+<input type="hidden" name="rwpp_current_page_url" id="rwpp_current_page_url" value="<?php echo esc_attr($_SERVER['REQUEST_URI']);?>">
+
 <?php 
-$args = array(
-  'post_type'         => array( 'product' ),
-  'posts_per_page'    => '-1',
-  'post_status'       => array('publish'),
-  'orderby'           => 'menu_order',
-  'order'             => 'ASC',
-);
-
-$products = new WP_Query( $args );
-
-if ( $products->have_posts() ) :?>
-  <div id="rwpp-products-list">
-  <?php 
-  $serial_no = 1;
-  while ( $products->have_posts() ) : $products->the_post();
-    global $post;
-    $product = wc_get_product( $post->ID );
-    include("template-parts/_product.php");
-    $serial_no++;
-  endwhile;
-  ?>
-  </div>
-  
-  <button id="rwpp-get-orders" class="button-primary"><?php _e('Save Changes', 'rwpp');?></button>
-
-  <div id="rwpp-response"></div>
-  <?php 
-endif;
-
-wp_reset_postdata();
+if(isset($_GET['current_tab']) && !empty($_GET['current_tab']) && $_GET['current_tab']=='sortby-categories'){
+  include("template-parts/_tab_category_products.php");
+  if(isset($_GET['term_id']) && !empty($_GET['term_id'])){
+    include("template-parts/_tab_all_products.php");
+  }
+}
+else{
+  include("template-parts/_tab_all_products.php");
+}
 ?>
 
 <?php include("template-parts/_footer.php");?>

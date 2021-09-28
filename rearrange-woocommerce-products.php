@@ -59,11 +59,16 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		public function setup_actions(){
 			register_activation_hook( RWPP_LOCATION, array( $this, 'activate' ) );
 			register_deactivation_hook( RWPP_LOCATION, array( $this, 'deactivate' ) );
+			
 			add_action( 'admin_init', array( $this, 'check_required_plugin') );
 			add_action( 'admin_enqueue_scripts', array($this, 'enqueue_assets') );
 			add_action( 'admin_menu', array($this, 'register_admin_menus') );
+
 			add_action( 'wp_ajax_save_all_order', array($this, 'save_all_order_handler'));
 			add_action( 'wp_ajax_nopriv_save_all_order', array($this, 'nonpriv_save_all_order_handler'));
+
+			add_action( 'wp_ajax_save_all_order_by_category', array($this, 'save_all_order_by_category_handler'));
+			add_action( 'wp_ajax_nopriv_save_all_order_by_category', array($this, 'nonpriv_save_all_order_by_category_handler'));
 		}
 
 		/**
@@ -186,6 +191,19 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		}
 		// for users not logged in
 		public function nonpriv_save_all_order_handler(){
+			return '';
+  		wp_die();
+		}
+
+		/**
+		 * Save sort order by category
+		 */
+		public function save_all_order_by_category_handler(){
+			echo 'Sort by categories';
+			die();
+		}
+		// for users not logged in
+		public function nonpriv_save_all_order_by_category_handler(){
 			return '';
   		wp_die();
 		}

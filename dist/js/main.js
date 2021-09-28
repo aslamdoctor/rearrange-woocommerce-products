@@ -17,91 +17,125 @@ sortablejs__WEBPACK_IMPORTED_MODULE_0__.Sortable.mount(new sortablejs__WEBPACK_I
 (function ($) {
   // On Dom Ready
   $(function () {
-    // Make products list sortable
+    // Sort by All Products
     var list_element = document.getElementById("rwpp-products-list");
-    var sortable = sortablejs__WEBPACK_IMPORTED_MODULE_0__.Sortable.create(list_element, {
-      animation: 150,
-      ghostClass: "ghost",
-      multiDrag: true,
-      // Enable the plugin
-      selectedClass: "sortable-selected",
-      // Class name for selected item
-      onSort: reportActivity
-    }); // Get sort orders and submit to save
 
-    $("#rwpp-get-orders").on("click", function () {
-      var submitButton = $(this);
-      var buttonText = submitButton.text();
+    if (list_element) {
+      var rwpp_remove_selected = function rwpp_remove_selected(ele) {
+        ele.removeClass("sortable-selected");
+        ele.removeAttr("draggable");
+      };
 
-      if (confirm("Are you sure you want to make these changes?")) {
-        submitButton.attr("disabled", "true");
-        submitButton.text("Processing...");
-        var sort_orders = sortable.toArray();
-        var saveData = {};
-        saveData.action = "save_all_order";
-        saveData.sort_orders = sort_orders;
-        $.ajax({
-          type: "POST",
-          url: ajaxurl,
-          data: saveData,
-          success: function success(response) {
-            console.log(response);
-            $("#rwpp-response").html(response);
-          },
-          error: function error(_error) {
-            console.log("Error:", _error);
-          },
-          complete: function complete() {
-            submitButton.removeAttr("disabled");
-            submitButton.text(buttonText);
+      var sortable = sortablejs__WEBPACK_IMPORTED_MODULE_0__.Sortable.create(list_element, {
+        animation: 150,
+        ghostClass: "ghost",
+        multiDrag: true,
+        // Enable the plugin
+        selectedClass: "sortable-selected",
+        // Class name for selected item
+        onSort: reportActivity
+      }); // Get sort orders and submit to save
+
+      $("#rwpp-save-orders").on("click", function () {
+        var submitButton = $(this);
+        var buttonText = submitButton.text();
+
+        if (confirm("Are you sure you want to make these changes?")) {
+          submitButton.attr("disabled", "true");
+          submitButton.text("Processing...");
+          var sort_orders = sortable.toArray();
+          var saveData = {};
+          saveData.sort_orders = sort_orders;
+          saveData.action = "save_all_order";
+
+          if ($("#rwpp_product_category").length) {
+            saveData.term_id = $("#rwpp_product_category").val();
+            saveData.action = "save_all_order_by_category";
           }
-        });
+
+          $.ajax({
+            type: "POST",
+            url: ajaxurl,
+            data: saveData,
+            success: function success(response) {
+              console.log(response);
+              $("#rwpp-response").html(response);
+            },
+            error: function error(_error) {
+              console.log("Error:", _error);
+            },
+            complete: function complete() {
+              submitButton.removeAttr("disabled");
+              submitButton.text(buttonText);
+            }
+          });
+        }
+      }); // Move item to Top
+
+      $("span.rwpp-product-movement .move-top").on("click", function (e) {
+        e.preventDefault;
+        var this_item = $(this).closest(".rwpp-product");
+        this_item.prependTo(list_element);
+        rwpp_remove_selected(this_item);
+      }); // Move item to Bottom
+
+      $("span.rwpp-product-movement .move-bottom").on("click", function (e) {
+        e.preventDefault;
+        var this_item = $(this).closest(".rwpp-product");
+        this_item.appendTo(list_element);
+        rwpp_remove_selected(this_item);
+      }); // Move item Up
+
+      $("span.rwpp-product-movement .move-up").on("click", function (e) {
+        e.preventDefault;
+        var this_item = $(this).closest(".rwpp-product");
+        this_item.prev().insertAfter(this_item);
+        rwpp_remove_selected(this_item);
+      }); // Move item Down
+
+      $("span.rwpp-product-movement .move-down").on("click", function (e) {
+        e.preventDefault;
+        var this_item = $(this).closest(".rwpp-product");
+        this_item.next().insertBefore(this_item);
+        rwpp_remove_selected(this_item);
+      }); // View product info
+
+      $("span.rwpp-product-movement .view-product-info").on("click", function (e) {
+        e.preventDefault;
+        var this_item = $(this).closest(".rwpp-product");
+        this_item.find(".rwpp-product-info").toggleClass("active");
+        rwpp_remove_selected(this_item);
+      });
+    } // Sort by Category
+
+
+    $("#rwpp_product_category").on("change", function (e) {
+      var category_id = $(this).val();
+      var current_page_url = $("#rwpp_current_page_url").val();
+
+      if (category_id !== "") {
+        current_page_url = updateQueryStringParameter(current_page_url, "term_id", category_id);
+      } else {
+        current_page_url = updateQueryStringParameter(current_page_url, "term_id", 0);
       }
-    }); // Move item to Top
 
-    $("span.rwpp-product-movement .move-top").on("click", function (e) {
-      e.preventDefault;
-      var this_item = $(this).closest(".rwpp-product");
-      this_item.prependTo(list_element);
-      rwpp_remove_selected(this_item);
-    }); // Move item to Bottom
-
-    $("span.rwpp-product-movement .move-bottom").on("click", function (e) {
-      e.preventDefault;
-      var this_item = $(this).closest(".rwpp-product");
-      this_item.appendTo(list_element);
-      rwpp_remove_selected(this_item);
-    }); // Move item Up
-
-    $("span.rwpp-product-movement .move-up").on("click", function (e) {
-      e.preventDefault;
-      var this_item = $(this).closest(".rwpp-product");
-      this_item.prev().insertAfter(this_item);
-      rwpp_remove_selected(this_item);
-    }); // Move item Down
-
-    $("span.rwpp-product-movement .move-down").on("click", function (e) {
-      e.preventDefault;
-      var this_item = $(this).closest(".rwpp-product");
-      this_item.next().insertBefore(this_item);
-      rwpp_remove_selected(this_item);
-    }); // View product info
-
-    $("span.rwpp-product-movement .view-product-info").on("click", function (e) {
-      e.preventDefault;
-      var this_item = $(this).closest(".rwpp-product");
-      this_item.find(".rwpp-product-info").toggleClass("active");
-      rwpp_remove_selected(this_item);
+      window.location.href = current_page_url;
     });
-
-    function rwpp_remove_selected(ele) {
-      ele.removeClass("sortable-selected");
-      ele.removeAttr("draggable");
-    }
   }); // Report when the sort order has changed
 
   function reportActivity() {
     console.log("The sort order has changed");
+  }
+
+  function updateQueryStringParameter(uri, key, value) {
+    var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+    var separator = uri.indexOf("?") !== -1 ? "&" : "?";
+
+    if (uri.match(re)) {
+      return uri.replace(re, "$1" + key + "=" + value + "$2");
+    } else {
+      return uri + separator + key + "=" + value;
+    }
   }
 })(jQuery);
 
