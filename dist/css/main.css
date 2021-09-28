@@ -1,6 +1,15 @@
 #rwpp-container .nav-tab-wrapper {
   margin-bottom: 20px;
 }
+#rwpp-container #rwpp-response {
+  margin-top: 20px;
+}
+#rwpp-container .notice {
+  margin-left: 0;
+}
+#rwpp-container .notice.top-notice {
+  margin-bottom: 20px;
+}
 
 #rwpp-products-list {
   position: relative;
@@ -88,8 +97,13 @@
   display: flex;
 }
 .rwpp-product.ghost {
-  background-color: #000;
+  background-color: #0073aa !important;
+  border: 1px solid #ccc !important;
   color: #fff;
+}
+.rwpp-product.sortable-selected {
+  background-color: #d9e8fa;
+  border: solid #0073aa 1px;
 }
 .rwpp-product:hover {
   border: 1px solid #adadad;

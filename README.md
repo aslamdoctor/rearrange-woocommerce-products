@@ -6,7 +6,7 @@
 - [x] Add menu link
 - [x] Add VueJS Support
 - [x] Page to rearrange all products
-- [ ] Save logic implementation
+- [x] Save logic implementation
 - [ ] Page to rearrange products based on selected category
 - [ ] Hook to add "Rearrange Products" link on categories action links
 - [ ] Frontend hook to modify wpquery and sort products based on current category

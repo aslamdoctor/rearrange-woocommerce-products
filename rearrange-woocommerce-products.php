@@ -62,6 +62,8 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 			add_action( 'admin_init', array( $this, 'check_required_plugin') );
 			add_action( 'admin_enqueue_scripts', array($this, 'enqueue_assets') );
 			add_action( 'admin_menu', array($this, 'register_admin_menus') );
+			add_action( 'wp_ajax_save_all_order', array($this, 'save_all_order_handler'));
+			add_action( 'wp_ajax_nopriv_save_all_order', array($this, 'nonpriv_save_all_order_handler'));
 		}
 
 		/**
@@ -139,13 +141,53 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 				__('Rearrange Products', 'rwpp'), 
 				$role, 
 				'rwpp-page', 
-				array($this, 'rwpp_callback')
+				array($this, 'add_pages_callback')
 			);   
 		}
 
-		public function rwpp_callback() {
+		public function add_pages_callback() {
 			include "inc/helpers.php";
 			include "views/rearrange_all_products.php";
+		}
+
+		/**
+		 * Save All Products sort order
+		 */
+		public function save_all_order_handler(){
+			if(isset($_POST['sort_orders'])){
+				$sort_orders = isset( $_POST['sort_orders'] ) ? 
+					array_map( 'sanitize_text_field', wp_unslash( $_POST['sort_orders'] ) ):
+					array();
+
+				if ( is_array( $sort_orders ) && count($sort_orders) > 0) {
+					global $wpdb;
+
+					$sql_query = "UPDATE {$wpdb->prefix}posts SET menu_order = ( CASE ";
+					$fields_in = '';
+
+					foreach($sort_orders as $new_sort_order=>$product_id){
+						$sql_query.="WHEN ID = '".$product_id."' THEN '".$new_sort_order."' ";
+						$fields_in.=$product_id.',';
+					}
+
+					$fields_in = rtrim($fields_in, ',');
+
+					$sql_query.="END )";
+
+					//echo $sql_query;
+					$wpdb->query($sql_query);
+					
+					echo '<div class="notice notice-success is-dismissible">
+					<p><strong>'.__('All products are rearranged now.', 'rwpp').'</strong></p>
+					</div>';
+				}
+			}
+  		wp_die();
+		}
+		// for users not logged in
+		public function nonpriv_save_all_order_handler(){
+			return '';
+  		wp_die();
 		}
 	}
 

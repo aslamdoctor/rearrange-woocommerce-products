@@ -69,8 +69,14 @@
   }
 
   &.ghost {
-    background-color: #000;
+    background-color: #0073aa !important;
+    border: 1px solid #ccc !important;
     color: #fff;
+  }
+
+  &.sortable-selected {
+    background-color: #d9e8fa;
+    border: solid #0073aa 1px;
   }
 
   &:hover {

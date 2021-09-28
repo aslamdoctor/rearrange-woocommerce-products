@@ -1,5 +1,13 @@
 <?php include("template-parts/_header.php");?>
 
+<div class="notice notice-warning inline top-notice">
+  <ul>
+    <li><strong>Important Notes</strong></li>
+	  <li><?php _e('Press "single click" to select multiple products and drag them.', 'rwpp');?></li>
+	  <li><?php _e('Products rearranging can not be undone after deactivating or deleting the plugin.', 'rwpp');?></li>
+  </ul>
+</div>
+
 <?php 
 $args = array(
   'post_type'         => array( 'product' ),
@@ -23,8 +31,10 @@ if ( $products->have_posts() ) :?>
   endwhile;
   ?>
   </div>
+  
+  <button id="rwpp-get-orders" class="button-primary"><?php _e('Save Changes', 'rwpp');?></button>
 
-  <button id="rwpp-get-orders" class="button-primary">Save Changes</button>
+  <div id="rwpp-response"></div>
   <?php 
 endif;
 
