@@ -3,7 +3,7 @@
 <div class="notice notice-warning inline top-notice">
   <ul>
     <li><strong>Important Notes</strong></li>
-	  <li><?php _e('Press "single click" to select multiple products and drag them.', 'rwpp');?></li>
+	  <li><?php _e('Use "single click" to select multiple products and drag them.', 'rwpp');?></li>
 	  <li><?php _e('Products rearranging can not be undone after deactivating or deleting the plugin.', 'rwpp');?></li>
   </ul>
 </div>

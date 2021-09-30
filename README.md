@@ -8,8 +8,8 @@
 - [x] Page to rearrange all products
 - [x] Save logic implementation
 - [x] Page to rearrange products based on selected category
-- [ ] Save logic implementation for selected category
-- [ ] Hook to add "Rearrange Products" link on categories action links
-- [ ] Frontend hook to modify wpquery and sort products based on current category
+- [x] Save logic implementation for selected category
+- [x] Hook to add "Rearrange Products" link on categories action links
+- [x] Frontend hook to modify wpquery and sort products based on current category
 - [ ] Create a hook that can show whatever messages I want from my server
 - [ ] Stress testing by adding 1000+ data

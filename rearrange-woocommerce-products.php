@@ -69,6 +69,10 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 
 			add_action( 'wp_ajax_save_all_order_by_category', array($this, 'save_all_order_by_category_handler'));
 			add_action( 'wp_ajax_nopriv_save_all_order_by_category', array($this, 'nonpriv_save_all_order_by_category_handler'));
+
+			add_filter('product_cat_row_actions', array($this, 'add_rearrange_link'), 10, 2); 
+
+			add_action('pre_get_posts', array($this, 'sort_products_by_category'), 999 );
 		}
 
 		/**
@@ -199,13 +203,55 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		 * Save sort order by category
 		 */
 		public function save_all_order_by_category_handler(){
-			echo 'Sort by categories';
+			if(isset($_POST['sort_orders']) && isset($_POST['term_id'])){
+				$sort_orders = isset( $_POST['sort_orders'] ) ? 
+					array_map( 'sanitize_text_field', wp_unslash( $_POST['sort_orders'] ) ):
+					array();
+				
+				$term_id = isset( $_POST['term_id'] ) ? sanitize_text_field( wp_unslash( $_POST['term_id'] ) ):'';
+
+				if ( is_array( $sort_orders ) && count($sort_orders) > 0) {
+					foreach($sort_orders as $new_sort_order=>$product_id){
+						$meta_key = 'rwpp_sortorder_'.$term_id;
+						$meta_value = $new_sort_order;
+						update_post_meta( $product_id, $meta_key, $meta_value);
+					}
+
+					echo '<div class="notice notice-success is-dismissible">
+					<p><strong>'.__('All products are rearranged now.', 'rwpp').'</strong></p>
+					</div>';
+				}
+			}
 			die();
 		}
 		// for users not logged in
 		public function nonpriv_save_all_order_by_category_handler(){
 			return '';
   		wp_die();
+		}
+
+		/**
+		 * Add "Rearrange" link on Product categories under admin
+		 */
+		public function add_rearrange_link($actions, $term){
+			$url = admin_url('edit.php?post_type=product&page=rwpp-page&current_tab=sortby-categories&term_id='.$term->term_id);
+			$actions['rearrange_link'] = '<a href="'.$url.'" class="rearrange_link">' . __('Rearrange Products') . '</a>';
+ 			return $actions;
+		}
+
+		/**
+		 * Modify Products loop query to sort by categories
+		 */
+		function sort_products_by_category( $query ){ 
+			if ( $query->is_main_query() && is_woocommerce() && is_product_category() ) {
+				$term = get_queried_object();
+				$term_id = $term->term_id;
+				if($term && $term_id){
+					$query->set( 'meta_key', 'rwpp_sortorder_'.$term_id);
+					$query->set( 'orderby', 'meta_value_num');
+					$query->set( 'order', 'ASC');
+				}
+    	}
 		}
 	}
 
