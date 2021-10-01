@@ -3,8 +3,13 @@
 <div class="notice notice-warning inline top-notice">
   <ul>
     <li><strong>Important Notes</strong></li>
-	  <li><?php _e('Use "single click" to select multiple products and drag them.', 'rwpp');?></li>
-	  <li><?php _e('Products rearranging can not be undone after deactivating or deleting the plugin.', 'rwpp');?></li>
+	  <li>- <?php _e('Use "single click" to select multiple products and drag them.', 'rwpp');?></li>
+    <?php if(isset($_GET['current_tab']) && !empty($_GET['current_tab']) && $_GET['current_tab']=='sortby-categories'){?>
+    <li>- <?php _e('Products arranged below <strong>will be reset</strong> after deactivating or deleting the plugin.', 'rwpp');?></li>
+    <?php } else {;?>
+	  <li>- <?php _e('Products arranged below <strong>can not be undone</strong> after deactivating or deleting the plugin.', 'rwpp');?></li>
+    <?php }?>
+	  <li>- <?php _e('If you are facing any issues, try the <a href="https://wordpress.org/plugins/rearrange-woocommerce-products/" target="_blank">troubleshooting</a> steps first.', 'rwpp');?></li>
   </ul>
 </div>
 

@@ -11,5 +11,7 @@
 - [x] Save logic implementation for selected category
 - [x] Hook to add "Rearrange Products" link on categories action links
 - [x] Frontend hook to modify wpquery and sort products based on current category
-- [ ] Create a hook that can show whatever messages I want from my server
+- [x] Plugin demo video
+- [x] Update plugin readme file and add demo video on it aswell
+- [x] Add php settings steps in troubleshooting section
 - [ ] Stress testing by adding 1000+ data

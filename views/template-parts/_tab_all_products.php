@@ -3,8 +3,6 @@ $args = array(
   'post_type'         => array( 'product' ),
   'posts_per_page'    => '-1',
   'post_status'       => array('publish'),
-  'orderby'           => 'menu_order',
-  'order'             => 'ASC',
 );
 
 if(isset($_GET['term_id']) && !empty($_GET['term_id'])){
@@ -18,6 +16,13 @@ if(isset($_GET['term_id']) && !empty($_GET['term_id'])){
         'operator' => 'IN'
       ),
     );
+  $args['meta_key'] = 'rwpp_sortorder_'.$term_id;
+  $args['orderby'] = 'meta_value_num';
+  $args['order'] = 'ASC';
+}
+else{
+  $args['orderby'] = 'menu_order';
+  $args['order'] = 'ASC';
 }
 
 $products = new WP_Query( $args );
