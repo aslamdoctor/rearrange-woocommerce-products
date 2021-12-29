@@ -31,9 +31,9 @@ sortablejs__WEBPACK_IMPORTED_MODULE_0__.Sortable.mount(new sortablejs__WEBPACK_I
         ghostClass: "ghost",
         multiDrag: true,
         // Enable the plugin
-        selectedClass: "sortable-selected",
-        // Class name for selected item
-        onSort: reportActivity
+        selectedClass: "sortable-selected" // Class name for selected item
+        //onSort: reportActivity,
+
       }); // Get sort orders and submit to save
 
       $("#rwpp-save-orders").on("click", function () {
@@ -58,7 +58,6 @@ sortablejs__WEBPACK_IMPORTED_MODULE_0__.Sortable.mount(new sortablejs__WEBPACK_I
             url: ajaxurl,
             data: saveData,
             success: function success(response) {
-              console.log(response);
               $("#rwpp-response").html(response);
             },
             error: function error(_error) {
@@ -123,8 +122,7 @@ sortablejs__WEBPACK_IMPORTED_MODULE_0__.Sortable.mount(new sortablejs__WEBPACK_I
     });
   }); // Report when the sort order has changed
 
-  function reportActivity() {
-    console.log("The sort order has changed");
+  function reportActivity() {//console.log("The sort order has changed");
   }
 
   function updateQueryStringParameter(uri, key, value) {

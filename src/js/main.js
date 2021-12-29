@@ -13,7 +13,7 @@ Sortable.mount(new MultiDrag());
         ghostClass: "ghost",
         multiDrag: true, // Enable the plugin
         selectedClass: "sortable-selected", // Class name for selected item
-        onSort: reportActivity,
+        //onSort: reportActivity,
       });
 
       // Get sort orders and submit to save
@@ -38,7 +38,6 @@ Sortable.mount(new MultiDrag());
             url: ajaxurl,
             data: saveData,
             success: function (response) {
-              console.log(response);
               $("#rwpp-response").html(response);
             },
             error: function (error) {
@@ -112,7 +111,7 @@ Sortable.mount(new MultiDrag());
 
   // Report when the sort order has changed
   function reportActivity() {
-    console.log("The sort order has changed");
+    //console.log("The sort order has changed");
   }
 
   function updateQueryStringParameter(uri, key, value) {

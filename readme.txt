@@ -3,7 +3,7 @@ Contributors: aslamdoctor
 Donate link: http://paypal.me/aslamdoctor
 Tags: woocommerce, ecommerce, product, reorder, sort, sortbycategory, Woo
 Requires at least: 4.3
-Tested up to: 5.8.1
+Tested up to: 5.8.2
 Stable tag: 4.3
 Requires PHP: 5.2.4
 License: GPLv3 or later License
@@ -17,7 +17,12 @@ Rearrange Woocommerce Products is a plugin that allows you to rearrange/reorder 
 
 This is very easy to use plugin with "drag & drop" functionality to rearrange the products.
 
-MAJOR UPDATES: 
+== URGENT ==
+* If you are using version 3.0.0, please update it to latest one as the files were not published properly on servers.
+
+
+== MAJOR UPDATES ==
+
 * Ability to sort products by any product category
 * Ability to select multiple products by single click and sort them at once
 
@@ -77,6 +82,24 @@ This will fix the issue.
 5. Shortcut link under Categories section to sort by categories
 
 == ChangeLog ==
+
+= Version 3.0.5 =
+* Security Fixes: Removed nonpriv handlers
+* Security Fixes: Added security to remove all SQL injections added as input
+* Minor fix for checking product loop inside pre_get_posts hook
+
+= Version 3.0.4 =
+* Fixed: While sorting by categories, some products that are added recently were not visible. 
+* Code re-factoring and cleanup. 
+
+= Version 3.0.3 =
+* Fixed: Keep default sort order on frontend if it was not updated for Categories. 
+
+= Version 3.0.2 =
+* Fixed: Category orders not showing any products due to meta_query not found. 
+
+= Version 3.0.1 =
+* Re-published the files as in v3.0.0, the files were not published properly
 
 = Version 3.0.0 =
 
