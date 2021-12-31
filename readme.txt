@@ -4,7 +4,7 @@ Donate link: http://paypal.me/aslamdoctor
 Tags: woocommerce, ecommerce, product, reorder, sort, sortbycategory, Woo
 Requires at least: 4.3
 Tested up to: 5.8.2
-Stable tag: 4.3
+Stable tag: 3.0.6
 Requires PHP: 5.2.4
 License: GPLv3 or later License
 URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -82,6 +82,12 @@ This will fix the issue.
 5. Shortcut link under Categories section to sort by categories
 
 == ChangeLog ==
+
+= Version 3.0.7 =
+* Security fixes: disable direct code file access from browser
+
+= Version 3.0.6 =
+* Minor security fixes
 
 = Version 3.0.5 =
 * Security Fixes: Removed nonpriv handlers

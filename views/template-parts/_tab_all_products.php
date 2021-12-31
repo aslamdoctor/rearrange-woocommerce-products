@@ -1,4 +1,8 @@
 <?php
+if (!defined('ABSPATH')) {
+  exit; // Exit if accessed directly
+}
+
 $args = array(
   'post_type'         => array('product'),
   'posts_per_page'    => '-1',
@@ -22,7 +26,7 @@ if (isset($_GET['term_id']) && !empty($_GET['term_id'])) {
     ),
   );
 
-  if($this->meta_field_exists($meta_key)){
+  if ($this->meta_field_exists($meta_key)) {
     $args['meta_key'] = $meta_key;
     $args['orderby'] = 'meta_value_num menu_order title';
     $args['order'] = 'ASC';
