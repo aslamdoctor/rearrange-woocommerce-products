@@ -32,10 +32,11 @@ Sortable.mount(new MultiDrag());
             saveData.term_id = $("#rwpp_product_category").val();
             saveData.action = "save_all_order_by_category";
           }
+          saveData.nonce = rwpp_ajax_var.nonce;
 
           $.ajax({
             type: "POST",
-            url: ajaxurl,
+            url: rwpp_ajax_var.url,
             data: saveData,
             success: function (response) {
               $("#rwpp-response").html(response);

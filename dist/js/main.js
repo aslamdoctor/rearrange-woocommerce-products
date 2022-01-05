@@ -53,9 +53,10 @@ sortablejs__WEBPACK_IMPORTED_MODULE_0__.Sortable.mount(new sortablejs__WEBPACK_I
             saveData.action = "save_all_order_by_category";
           }
 
+          saveData.nonce = rwpp_ajax_var.nonce;
           $.ajax({
             type: "POST",
-            url: ajaxurl,
+            url: rwpp_ajax_var.url,
             data: saveData,
             success: function success(response) {
               $("#rwpp-response").html(response);
