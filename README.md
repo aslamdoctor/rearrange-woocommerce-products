@@ -11,7 +11,7 @@ This is very easy to use plugin with “drag & drop” functionality to rearrang
 
 To use this plugin, please make sure that Woocommerce is installed and Activated.
 
-## Important Nores
+## Important Notes
 
 1. If you are using any page builder plugin to display Products, this plugin may not work. Advice to consult page builder plugin developers for same.
 

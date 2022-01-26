@@ -3,7 +3,7 @@
  * Plugin Name: Rearrange Woocommerce Products
  * Plugin URI: https://wordpress.org/plugins/rearrange-woocommerce-products/
  * Description: a plugin to Rearrange Woocommerce Products listed on the Shop page
- * Version: 3.0.9
+ * Version: 4.0.0
  * Author: Aslam Doctor
  * Author URI: https://aslamdoctor.com/
  * Developer: Aslam Doctor
@@ -11,7 +11,7 @@
  * Text Domain:  rwpp
  *
  * WC requires at least: 4.3
- * WC tested up to: 6.0.0
+ * WC tested up to: 6.1.1
  *
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -130,7 +130,15 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		 */
 		public function register_admin_menus() {
 			if ( $this->has_required_permissions() ) {
-				$this->add_pages( 'manage_options' );
+				$user = wp_get_current_user();
+				$role = (array) $user->roles;
+				if ( in_array( 'administrator', $role, true ) ) {
+					$this->add_pages( 'manage_options' );
+				} elseif ( in_array( 'shop_manager', $role, true ) ) {
+					$this->add_pages( 'shop_manager' );
+				} elseif ( current_user_can( 'manage_woocommerce' ) ) {
+					$this->add_pages( 'manage_woocommerce' );
+				}
 			}
 		}
 
