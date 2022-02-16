@@ -46,8 +46,8 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		 * Setup Hooks
 		 */
 		public function setup_actions() {
-			register_activation_hook( RWPP_LOCATION, array( $this, 'activate' ) );
-			register_deactivation_hook( RWPP_LOCATION, array( $this, 'deactivate' ) );
+			register_activation_hook( __FILE__, array( $this, 'activate' ) );
+			register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
 			add_action( 'admin_init', array( $this, 'check_required_plugin' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
@@ -59,7 +59,6 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 			add_filter( 'product_cat_row_actions', array( $this, 'add_rearrange_link' ), 10, 2 );
 
 			add_action( 'save_post_product', array( $this, 'new_product_added' ), 10, 3 );
-
 			add_action( 'pre_get_posts', array( $this, 'sort_products_by_category' ), 999 );
 		}
 
@@ -72,7 +71,7 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		/**
 		 * Dectivate plugin callback
 		 */
-		public static function dectivate() {
+		public static function deactivate() {
 		}
 
 		/**
@@ -182,7 +181,7 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 							$fields_in = '';
 
 							foreach ( $sort_orders as $new_sort_order => $product_id ) {
-								$sql_query .= "WHEN ID = '" . $product_id . "' THEN '" . $new_sort_order . "' ";
+								$sql_query .= "WHEN ID = '" . $product_id . "' AND post_type='product' THEN '" . $new_sort_order . "' ";
 								$fields_in .= $product_id . ',';
 							}
 
