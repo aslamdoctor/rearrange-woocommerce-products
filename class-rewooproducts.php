@@ -3,7 +3,7 @@
  * Plugin Name: Rearrange Woocommerce Products
  * Plugin URI: https://wordpress.org/plugins/rearrange-woocommerce-products/
  * Description: a plugin to Rearrange Woocommerce Products listed on the Shop page
- * Version: 4.0.1
+ * Version: 4.0.2
  * Author: Aslam Doctor
  * Author URI: https://aslamdoctor.com/
  * Developer: Aslam Doctor
@@ -11,7 +11,7 @@
  * Text Domain:  rwpp
  *
  * WC requires at least: 4.3
- * WC tested up to: 6.1.1
+ * WC tested up to: 6.3.1
  *
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -214,12 +214,20 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		 * @param [Array] $sort_orders Sortorders to update.
 		 */
 		public function clear_sort_orders( $sort_orders ) {
-			$sort_orders = isset( $sort_orders ) ?
-			array_map( 'sanitize_text_field', wp_unslash( $sort_orders ) ) :
-			array();
-			$sort_orders = isset( $sort_orders ) ?
-			array_map( 'esc_attr', wp_unslash( $sort_orders ) ) :
-			array();
+
+			if ( isset( $sort_orders ) ) {
+				$keys = array_keys( $sort_orders );
+				if ( $keys === array_filter( $keys, 'is_numeric' ) ) {
+
+					$sort_orders = array_combine(
+						array_map( 'intval', $keys ),
+						array_values( $sort_orders )
+					);
+				}
+			}
+
+			$sort_orders = isset( $sort_orders ) ? array_map( 'sanitize_text_field', wp_unslash( $sort_orders ) ) : array();
+			$sort_orders = isset( $sort_orders ) ? array_map( 'esc_attr', wp_unslash( $sort_orders ) ) : array();
 			$sort_orders = array_filter( $sort_orders, 'is_numeric' );
 
 			return $sort_orders;
