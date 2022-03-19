@@ -3,7 +3,7 @@
  * Plugin Name: Rearrange Woocommerce Products
  * Plugin URI: https://wordpress.org/plugins/rearrange-woocommerce-products/
  * Description: a plugin to Rearrange Woocommerce Products listed on the Shop page
- * Version: 4.0.2
+ * Version: 4.0.3
  * Author: Aslam Doctor
  * Author URI: https://aslamdoctor.com/
  * Developer: Aslam Doctor
@@ -181,8 +181,8 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 							$fields_in = '';
 
 							foreach ( $sort_orders as $new_sort_order => $product_id ) {
-								$sql_query .= "WHEN ID = '" . $product_id . "' AND post_type='product' THEN '" . $new_sort_order . "' ";
-								$fields_in .= $product_id . ',';
+								$sql_query .= "WHEN ID = '" . intval( $product_id ) . "' AND post_type='product' THEN '" . esc_sql( $new_sort_order ) . "' ";
+								$fields_in .= intval( $product_id ) . ',';
 							}
 
 							$fields_in = rtrim( $fields_in, ',' );
