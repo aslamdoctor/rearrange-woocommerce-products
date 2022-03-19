@@ -36,7 +36,7 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 	 */
 	class ReWooProducts {
 		/**
-		 * Setup plugin one initializing class object
+		 * Setup plugin on initializing class object
 		 */
 		public function __construct() {
 			$this->setup_actions();
