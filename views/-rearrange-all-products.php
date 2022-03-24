@@ -13,17 +13,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="notice notice-warning inline top-notice">
 	<ul>
-		<li><strong>Important Notes</strong></li>
-		<li>- <?php _e( 'Use "single click" to select multiple products and drag them.', 'rwpp' ); // phpcs:ignore ?></li>
+		<li><strong><?php esc_html_e( 'Important Notes', 'rearrange-woocommerce-products' ); ?></strong></li>
+		<li>- <?php esc_html_e( 'Use "single click" to select multiple products and drag them.', 'rearrange-woocommerce-products' ); // phpcs:ignore ?></li>
 		<?php if ( isset( $_GET['current_tab'] ) && ! empty( $_GET['current_tab'] ) && 'sortby-categories' === $_GET['current_tab'] ) {  // phpcs:ignore WordPress.Security.NonceVerification ?>
-			<li>- <?php _e( 'Products arranged below <strong>will be reset</strong> after deactivating or deleting the plugin.', 'rwpp' ); // phpcs:ignore ?></li>
+			<li>- <?php esc_html_e( 'Products arranged below', 'rearrange-woocommerce-products' );?> <strong><?php esc_html_e('will be reset', 'rearrange-woocommerce-products' );?></strong> <?php esc_html_e('after deactivating or deleting the plugin.', 'rearrange-woocommerce-products' ); // phpcs:ignore ?></li>
 			<?php
 		} else {
 			;
 			?>
-			<li>- <?php _e( 'Products arranged below <strong>can not be undone</strong> after deactivating or deleting the plugin.', 'rwpp' ); // phpcs:ignore ?></li>
+			<li>- <?php esc_html_e( 'Products arranged below', 'rearrange-woocommerce-products' );?> <strong><?php esc_html_e('can not be undone');?></strong> <?php esc_html_e('after deactivating or deleting the plugin.', 'rearrange-woocommerce-products' ); // phpcs:ignore ?></li>
 		<?php } ?>
-		<li>- <?php _e( 'If you are facing any issues, try the <a href="https://wordpress.org/plugins/rearrange-woocommerce-products/" target="_blank">troubleshooting</a> steps first.', 'rwpp' ); // phpcs:ignore ?></li>
+		<li>- <?php esc_html_e( 'If you are facing any issues, try the ', 'rearrange-woocommerce-products' );?><a href="https://wordpress.org/plugins/rearrange-woocommerce-products/" target="_blank"><?php esc_html_e('troubleshooting', 'rearrange-woocommerce-products' );?></a> <?php esc_html_e('steps first.', 'rearrange-woocommerce-products' ); // phpcs:ignore ?></li>
 	</ul>
 </div>
 

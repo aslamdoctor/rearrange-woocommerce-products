@@ -58,7 +58,7 @@ endwhile;
 		?>
 	</div>
 
-	<button id="rwpp-save-orders" class="button-primary"><?php esc_html_e( 'Save Changes', 'rwpp' ); ?></button>
+	<button id="rwpp-save-orders" class="button-primary"><?php esc_html_e( 'Save Changes', 'rearrange-woocommerce-products' ); ?></button>
 
 	<div id="rwpp-response"></div>
 	<?php

@@ -3,12 +3,12 @@
  * Plugin Name: Rearrange Woocommerce Products
  * Plugin URI: https://wordpress.org/plugins/rearrange-woocommerce-products/
  * Description: a plugin to Rearrange Woocommerce Products listed on the Shop page
- * Version: 4.0.3
+ * Version: 4.0.4
  * Author: Aslam Doctor
  * Author URI: https://aslamdoctor.com/
  * Developer: Aslam Doctor
  * Developer URI: https://aslamdoctor.com/
- * Text Domain:  rwpp
+ * Text Domain:  rearrange-woocommerce-products
  *
  * WC requires at least: 4.3
  * WC tested up to: 6.3.1
@@ -121,7 +121,8 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		 * Show plugin activation notice
 		 */
 		public function plugin_notice() {
-			_e( '<div class="error"><p>Please activate Woocommerce plugin before using <strong>Rearrange Woocommerce Products</strong> plugin.</p></div>', 'rwpp' ); // phpcs:ignore
+			?> <div class="error"><p> <?php esc_html_e( 'Please activate Woocommerce plugin before using', 'rearrange-woocommerce-products' ); ?> <strong><?php esc_html_e( 'Rearrange Woocommerce Products', 'rearrange-woocommerce-products' ); ?></strong> <?php esc_html_e( 'plugin', 'rearrange-woocommerce-products' ); ?>.</p></div>
+			<?php
 		}
 
 		/**
@@ -149,8 +150,8 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		public function add_pages( $role ) {
 			add_submenu_page(
 				'edit.php?post_type=product',
-				__( 'Rearrange Products', 'rwpp' ),
-				__( 'Rearrange Products', 'rwpp' ),
+				__( 'Rearrange Products', 'rearrange-woocommerce-products' ),
+				__( 'Rearrange Products', 'rearrange-woocommerce-products' ),
 				$role,
 				'rwpp-page',
 				array( $this, 'add_pages_callback' )
@@ -198,7 +199,7 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 							$wpdb->query( $sql_query ); // phpcs:ignore
 
 							echo '<div class="notice notice-success is-dismissible">
-							<p><strong>' . esc_html( __( 'All products are rearranged now.', 'rwpp' ) ) . '</strong></p>
+							<p><strong>' . esc_html( __( 'All products are rearranged now.', 'rearrange-woocommerce-products' ) ) . '</strong></p>
 							</div>';
 						}
 					}
@@ -256,7 +257,7 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 							}
 
 							echo '<div class="notice notice-success is-dismissible">
-							<p><strong>' . esc_html( __( 'All products are rearranged now.', 'rwpp' ) ) . '</strong></p>
+							<p><strong>' . esc_html( __( 'All products are rearranged now.', 'rearrange-woocommerce-products' ) ) . '</strong></p>
 							</div>';
 						}
 					}

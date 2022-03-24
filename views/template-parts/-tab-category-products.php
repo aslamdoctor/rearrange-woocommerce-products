@@ -22,7 +22,7 @@ wp_dropdown_categories(
 		'taxonomy'          => 'product_cat',
 		'hierarchical'      => true,
 		'required'          => true,
-		'show_option_none'  => __( 'Select Product Category' ),
+		'show_option_none'  => __( 'Select Product Category', 'rearrange-woocommerce-products' ),
 		'option_none_value' => '',
 		'orderby'           => 'name',
 		'selected'          => $selected,
