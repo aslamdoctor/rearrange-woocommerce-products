@@ -80,6 +80,9 @@ This will fix the issue.
 
 == ChangeLog ==
 
+= Version 4.0.5 =
+* added global translation support
+
 = Version 4.0.4 =
 * added plugin translation support
 
