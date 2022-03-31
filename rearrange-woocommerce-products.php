@@ -9,6 +9,8 @@
  * Developer: Aslam Doctor
  * Developer URI: https://aslamdoctor.com/
  * Text Domain:  rearrange-woocommerce-products
+ * Domain Path: /languages
+ * Requires at least: 4.6
  *
  * WC requires at least: 4.3
  * WC tested up to: 6.3.1
