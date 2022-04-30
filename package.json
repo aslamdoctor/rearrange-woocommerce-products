@@ -1,8 +1,8 @@
 {
   "name": "rearrange-woocommerce-products",
-  "version": "3.0.0",
+  "version": "4.0.6",
   "description": "Rearrange Woocommerce Products Plugin",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "dev": "mix",
     "watch": "mix watch",
@@ -25,11 +25,11 @@
   },
   "homepage": "https://github.com/aslamdoctor/rearrange-woocommerce-products#readme",
   "devDependencies": {
-    "laravel-mix": "^6.0.31",
-    "sass": "^1.42.1",
-    "sass-loader": "^12.1.0"
+    "laravel-mix": "^6.0.43",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0"
   },
   "dependencies": {
-    "sortablejs": "^1.14.0"
+    "sortablejs": "^1.15.0"
   }
 }

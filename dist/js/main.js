@@ -165,7 +165,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Swap": function() { return /* binding */ SwapPlugin; }
 /* harmony export */ });
 /**!
- * Sortable 1.14.0
+ * Sortable 1.15.0
  * @author	RubaXa   <trash@rubaxa.org>
  * @author	owenm    <owen23355@gmail.com>
  * @license MIT
@@ -326,7 +326,7 @@ function _nonIterableSpread() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
-var version = "1.14.0";
+var version = "1.15.0";
 
 function userAgent(pattern) {
   if (typeof window !== 'undefined' && window.navigator) {
@@ -1333,7 +1333,7 @@ _detectNearestEmptySortable = function _detectNearestEmptySortable(x, y) {
 }; // #1184 fix - Prevent click event on fallback if dragged but item not changed position
 
 
-if (documentExists) {
+if (documentExists && !ChromeForAndroid) {
   document.addEventListener('click', function (evt) {
     if (ignoreNextClick) {
       evt.preventDefault();
@@ -1952,6 +1952,7 @@ Sortable.prototype =
 
     if (!Sortable.eventCanceled) {
       cloneEl = clone(dragEl);
+      cloneEl.removeAttribute("id");
       cloneEl.draggable = false;
       cloneEl.style['will-change'] = '';
 
@@ -2193,7 +2194,14 @@ Sortable.prototype =
 
         if (_onMove(rootEl, el, dragEl, dragRect, target, targetRect, evt, !!target) !== false) {
           capture();
-          el.appendChild(dragEl);
+
+          if (elLastChild && elLastChild.nextSibling) {
+            // the last draggable element is not the last node
+            el.insertBefore(dragEl, elLastChild.nextSibling);
+          } else {
+            el.appendChild(dragEl);
+          }
+
           parentEl = el; // actualization
 
           changed();
@@ -3338,11 +3346,13 @@ function MultiDragPlugin() {
       }
     }
 
-    if (sortable.options.supportPointer) {
-      on(document, 'pointerup', this._deselectMultiDrag);
-    } else {
-      on(document, 'mouseup', this._deselectMultiDrag);
-      on(document, 'touchend', this._deselectMultiDrag);
+    if (!sortable.options.avoidImplicitDeselect) {
+      if (sortable.options.supportPointer) {
+        on(document, 'pointerup', this._deselectMultiDrag);
+      } else {
+        on(document, 'mouseup', this._deselectMultiDrag);
+        on(document, 'touchend', this._deselectMultiDrag);
+      }
     }
 
     on(document, 'keydown', this._checkKeyDown);
@@ -3350,6 +3360,7 @@ function MultiDragPlugin() {
     this.defaults = {
       selectedClass: 'sortable-selected',
       multiDragKey: null,
+      avoidImplicitDeselect: false,
       setData: function setData(dataTransfer, dragEl) {
         var data = '';
 
@@ -3640,7 +3651,7 @@ function MultiDragPlugin() {
             rootEl: rootEl,
             name: 'select',
             targetEl: dragEl$1,
-            originalEvt: evt
+            originalEvent: evt
           }); // Modifier activated, select from last to dragEl
 
           if (evt.shiftKey && lastMultiDragSelect && sortable.el.contains(lastMultiDragSelect)) {
@@ -3669,7 +3680,7 @@ function MultiDragPlugin() {
                   rootEl: rootEl,
                   name: 'select',
                   targetEl: children[i],
-                  originalEvt: evt
+                  originalEvent: evt
                 });
               }
             }
@@ -3686,7 +3697,7 @@ function MultiDragPlugin() {
             rootEl: rootEl,
             name: 'deselect',
             targetEl: dragEl$1,
-            originalEvt: evt
+            originalEvent: evt
           });
         }
       } // Multi-drag drop
@@ -3797,7 +3808,7 @@ function MultiDragPlugin() {
           rootEl: this.sortable.el,
           name: 'deselect',
           targetEl: el,
-          originalEvt: evt
+          originalEvent: evt
         });
       }
     },
@@ -4079,12 +4090,12 @@ Sortable.mount(Remove, Revert);
 /******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
 /******/ 					installedChunks[chunkId][0]();
 /******/ 				}
-/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 				installedChunks[chunkId] = 0;
 /******/ 			}
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunkrearrange_woocommerce_products_v2"] = self["webpackChunkrearrange_woocommerce_products_v2"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkrearrange_woocommerce_products"] = self["webpackChunkrearrange_woocommerce_products"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	}();
