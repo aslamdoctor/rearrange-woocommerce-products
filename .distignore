@@ -6,6 +6,8 @@
 
 .distignore
 .gitignore
+.gitattributes
+.browserslistrc
 .prettierrc.json
 CONTRIBUTING.md
 README.md
