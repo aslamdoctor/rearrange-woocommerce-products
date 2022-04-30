@@ -6,8 +6,6 @@ name: Deploy to WordPress.org
 on:
   # Triggers the workflow on push request events but only for the main branch
   push:
-    tags:
-      - '*'
     branches:
       - main
 
