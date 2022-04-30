@@ -1,0 +1,14 @@
+/.wordpress-org
+/.git
+/.github
+/node_modules
+/src
+
+.distignore
+.gitignore
+.prettierrc.json
+CONTRIBUTING.md
+README.md
+package-lock.json
+package.json
+webpack.mix.js
