@@ -4,7 +4,7 @@ Donate link: http://paypal.me/aslamdoctor
 Tags: woocommerce, ecommerce, product, reorder, sort, sortbycategory, Woo
 Requires at least: 4.6
 Tested up to: 5.9.3
-Stable tag: 4.0.8
+Stable tag: 4.0.9
 Requires PHP: 7.0.0
 License: GPLv3 or later License
 URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -55,15 +55,20 @@ Click on "Sort by Categories" tab to arrange products by Categories.
 
 == Troubleshooting ==
 
-If the sort order you changed is not working on your Shop page, please check below is set properly.
+**If the sort order you changed is not working on your Shop page, please check below is set properly.**
 
 1. Go to Wordpress Admin > Appearance > Customize
 2. Select “Woocommerce” from left and go to “Product Catalogue”
 3. Now here check for “Default Product Sorting”.
 4. Make sure it is set to “Default sorting (custom ordering + name)”
 
-If you have huge list of product and the plugin is not saving the sort order changes then it may be issue with PHP configuration done on your server for `memory_limit` and `max_execution_time`.
-Ask your web hosting provider to increase `memory_limit` and `max_execution_time` and try updating sort order after that. 
+**Some products are missing when sorted by categories? Follow the solutuio below:**
+
+The workaround solution for this is to simply go to **Admin > Rearrange Products > Sort by Categories** and then select each category one by one from the Dropdown, and DON'T click the “Save” button. This will update all categories metadata into database one by one and will fix your issue. This is just a **one-time process** and it will fix your issue forever.
+What is happening here is that the categories that you have not organized, don’t have metadata(for sort order) in the database. And because of that, some products don’t appear on those categories.
+
+**If you have huge list of product and the plugin is not saving the sort order changes then it may be issue with PHP configuration done on your server for `memory_limit` and `max_execution_time`.
+Ask your web hosting provider to increase `memory_limit` and `max_execution_time` and try updating sort order after that.**
 
 This will fix the issue.
 
@@ -85,6 +90,10 @@ If you want to fix a bug in the plugin or add new features, feel free to fork th
 5. Shortcut link under Categories section to sort by categories
 
 == ChangeLog ==
+
+= Version 4.0.9 =
+* added Troubleshooting steps for fix missing products issue
+* tested with woocommerce version 6.5.1
 
 = Version 4.0.8 =
 * updated all node/npm packages to latest stable version

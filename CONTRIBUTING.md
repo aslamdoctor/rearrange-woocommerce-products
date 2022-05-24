@@ -20,6 +20,6 @@ npm install
 npm run watch
 ```
 
-**Step 4:** You can now work on the PHP, JS and CSS files. Please follow the [WordPress Coding Standards](http://make.wordpress.org/core/handbook/coding-standards/) and also .
+**Step 4:** You can now work on the PHP, JS and CSS files. Please follow the [WordPress Coding Standards](http://make.wordpress.org/core/handbook/coding-standards/).
 
 Step 3: Open a pull request.
