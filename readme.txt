@@ -4,7 +4,7 @@ Donate link: http://paypal.me/aslamdoctor
 Tags: woocommerce, ecommerce, product, reorder, sort, sortbycategory, Woo
 Requires at least: 4.6
 Tested up to: 5.9.3
-Stable tag: 4.1.0
+Stable tag: 4.1.1
 Requires PHP: 7.0.0
 License: GPLv3 or later License
 URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -93,7 +93,7 @@ If you want to fix a bug in the plugin or add new features, feel free to fork th
 
 == ChangeLog ==
 
-= Version 4.1.0 =
+= Version 4.1.1 =
 * Added translations for:
 - English (Canada)
 - English (UK)
