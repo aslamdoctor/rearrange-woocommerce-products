@@ -1,0 +1,156 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rearrange Woocommerce Products\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-27 05:24+0000\n"
+"PO-Revision-Date: 2022-06-27 05:32+0000\n"
+"Last-Translator: \n"
+"Language-Team: Hindi\n"
+"Language: hi_IN\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.1; wp-5.9.3\n"
+"X-Domain: rearrange-woocommerce-products"
+
+#: views/template-parts/-footer.php:14
+msgid "5 Star Ratings"
+msgstr "5 स्टार रेटिंग"
+
+#. Description of the plugin
+msgid ""
+"a WordPress plugin to Rearrange Woocommerce Products listed on the Shop page"
+msgstr ""
+"शॉप पेज पर सूचीबद्ध Woocommerce उत्पादों को पुनर्व्यवस्थित करने के लिए एक "
+"वर्डप्रेस प्लगइन"
+
+#: views/-rearrange-all-products.php:19 views/-rearrange-all-products.php:24
+msgid "after deactivating or deleting the plugin."
+msgstr "प्लगइन को निष्क्रिय या हटाने के बाद।"
+
+#: rearrange-woocommerce-products.php:217
+#: rearrange-woocommerce-products.php:276
+msgid "All products are rearranged now."
+msgstr "सभी उत्पादों को अब पुनर्व्यवस्थित किया गया है।"
+
+#. Author of the plugin
+msgid "Aslam Doctor"
+msgstr "असलम डॉक्टर"
+
+#: views/template-parts/-footer.php:16
+msgid "Buy me a coffee"
+msgstr "मेरे लिए एक कॉफी खरीदें"
+
+#: views/template-parts/-product.php:33
+msgid "Edit Product"
+msgstr "उत्पाद संपादित करें"
+
+#: views/template-parts/-footer.php:15
+msgid "Facing issues?"
+msgstr "मुद्दों का सामना करना पड़ रहा है?"
+
+#. Author URI of the plugin
+msgid "https://aslamdoctor.com/"
+msgstr "https://aslamdoctor.com/"
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/rearrange-woocommerce-products/"
+msgstr "https://wordpress.org/plugins/rearrange-woocommerce-products/"
+
+#: views/-rearrange-all-products.php:26
+msgid "If you are facing any issues, try the "
+msgstr "यदि आप किसी समस्या का सामना कर रहे हैं, तो कोशिश करें"
+
+#: views/template-parts/-footer.php:14
+msgid "If you like this plugin, please give"
+msgstr "अगर आपको यह प्लगइन पसंद है, तो कृपया दें"
+
+#: views/-rearrange-all-products.php:16
+msgid "Important Notes"
+msgstr "महत्वपूर्ण लेख"
+
+#: views/template-parts/-product.php:20
+msgid "Move one step down"
+msgstr "एक कदम नीचे ले जाएँ"
+
+#: views/template-parts/-product.php:19
+msgid "Move one step up"
+msgstr "एक कदम बढ़ाओ"
+
+#: views/template-parts/-product.php:18
+msgid "Move to bottom of list"
+msgstr "सूची के नीचे ले जाएँ"
+
+#: views/template-parts/-product.php:17
+msgid "Move to top of list"
+msgstr "सूची में सबसे ऊपर जाएं"
+
+#: rearrange-woocommerce-products.php:135
+msgid "Please activate Woocommerce plugin before using"
+msgstr "कृपया उपयोग करने से पहले Woocommerce प्लगइन सक्रिय करें"
+
+#: rearrange-woocommerce-products.php:135
+msgid "plugin"
+msgstr "प्लगइन"
+
+#: views/-rearrange-all-products.php:19 views/-rearrange-all-products.php:24
+msgid "Products arranged below"
+msgstr "नीचे व्यवस्थित उत्पाद"
+
+#: rearrange-woocommerce-products.php:166
+#: rearrange-woocommerce-products.php:167
+msgid "Rearrange Products"
+msgstr "उत्पादों को पुनर्व्यवस्थित करें"
+
+#. Name of the plugin
+#: rearrange-woocommerce-products.php:135 views/template-parts/-header.php:14
+msgid "Rearrange Woocommerce Products"
+msgstr "Woocommerce उत्पादों को पुनर्व्यवस्थित करें"
+
+#: views/template-parts/-footer.php:15
+msgid "Request Support"
+msgstr "समर्थन का अनुरोध करें"
+
+#: views/template-parts/-tab-all-products.php:61
+msgid "Save Changes"
+msgstr "परिवर्तनों को सुरक्षित करें"
+
+#: views/template-parts/-tab-category-products.php:25
+msgid "Select Product Category"
+msgstr "उत्पाद श्रेणी का चयन करें"
+
+#: views/template-parts/-header.php:19
+msgid "Sort by Categories"
+msgstr "श्रेणियों के आधार पर छाँटें"
+
+#: views/template-parts/-header.php:17
+msgid "Sort by Products"
+msgstr "उत्पादों के आधार पर छाँटें"
+
+#: views/-rearrange-all-products.php:26
+msgid "steps first."
+msgstr "पहले कदम।"
+
+#: views/-rearrange-all-products.php:26
+msgid "troubleshooting"
+msgstr "समस्या निवारण"
+
+#: views/-rearrange-all-products.php:17
+msgid "Use \"single click\" to select multiple products and drag them."
+msgstr ""
+"अनेक उत्पादों का चयन करने और उन्हें खींचने के लिए \"एकल क्लिक\" का उपयोग "
+"करें।"
+
+#: views/template-parts/-product.php:32
+msgid "View Product"
+msgstr "उत्पाद देखें"
+
+#: views/template-parts/-product.php:21
+msgid "View product info"
+msgstr "उत्पाद जानकारी देखें"
+
+#: views/-rearrange-all-products.php:19
+msgid "will be reset"
+msgstr "रीसेट हो जाएगा"
