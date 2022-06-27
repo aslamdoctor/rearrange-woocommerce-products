@@ -1,0 +1,153 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Rearrange Woocommerce Products\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-27 05:24+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.1; wp-5.9.3\n"
+"X-Domain: rearrange-woocommerce-products"
+
+#: views/template-parts/-footer.php:14
+msgid "5 Star Ratings"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"a WordPress plugin to Rearrange Woocommerce Products listed on the Shop page"
+msgstr ""
+
+#: views/-rearrange-all-products.php:19 views/-rearrange-all-products.php:24
+msgid "after deactivating or deleting the plugin."
+msgstr ""
+
+#: rearrange-woocommerce-products.php:217
+#: rearrange-woocommerce-products.php:276
+msgid "All products are rearranged now."
+msgstr ""
+
+#. Author of the plugin
+msgid "Aslam Doctor"
+msgstr ""
+
+#: views/template-parts/-footer.php:16
+msgid "Buy me a coffee"
+msgstr ""
+
+#: views/template-parts/-product.php:33
+msgid "Edit Product"
+msgstr ""
+
+#: views/template-parts/-footer.php:15
+msgid "Facing issues?"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://aslamdoctor.com/"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/rearrange-woocommerce-products/"
+msgstr ""
+
+#: views/-rearrange-all-products.php:26
+msgid "If you are facing any issues, try the "
+msgstr ""
+
+#: views/template-parts/-footer.php:14
+msgid "If you like this plugin, please give"
+msgstr ""
+
+#: views/-rearrange-all-products.php:16
+msgid "Important Notes"
+msgstr ""
+
+#: views/template-parts/-product.php:20
+msgid "Move one step down"
+msgstr ""
+
+#: views/template-parts/-product.php:19
+msgid "Move one step up"
+msgstr ""
+
+#: views/template-parts/-product.php:18
+msgid "Move to bottom of list"
+msgstr ""
+
+#: views/template-parts/-product.php:17
+msgid "Move to top of list"
+msgstr ""
+
+#: rearrange-woocommerce-products.php:135
+msgid "Please activate Woocommerce plugin before using"
+msgstr ""
+
+#: rearrange-woocommerce-products.php:135
+msgid "plugin"
+msgstr ""
+
+#: views/-rearrange-all-products.php:19 views/-rearrange-all-products.php:24
+msgid "Products arranged below"
+msgstr ""
+
+#: rearrange-woocommerce-products.php:166
+#: rearrange-woocommerce-products.php:167
+msgid "Rearrange Products"
+msgstr ""
+
+#. Name of the plugin
+#: rearrange-woocommerce-products.php:135 views/template-parts/-header.php:14
+msgid "Rearrange Woocommerce Products"
+msgstr ""
+
+#: views/template-parts/-footer.php:15
+msgid "Request Support"
+msgstr ""
+
+#: views/template-parts/-tab-all-products.php:61
+msgid "Save Changes"
+msgstr ""
+
+#: views/template-parts/-tab-category-products.php:25
+msgid "Select Product Category"
+msgstr ""
+
+#: views/template-parts/-header.php:19
+msgid "Sort by Categories"
+msgstr ""
+
+#: views/template-parts/-header.php:17
+msgid "Sort by Products"
+msgstr ""
+
+#: views/-rearrange-all-products.php:26
+msgid "steps first."
+msgstr ""
+
+#: views/-rearrange-all-products.php:26
+msgid "troubleshooting"
+msgstr ""
+
+#: views/-rearrange-all-products.php:17
+msgid "Use \"single click\" to select multiple products and drag them."
+msgstr ""
+
+#: views/template-parts/-product.php:32
+msgid "View Product"
+msgstr ""
+
+#: views/template-parts/-product.php:21
+msgid "View product info"
+msgstr ""
+
+#: views/-rearrange-all-products.php:19
+msgid "will be reset"
+msgstr ""
