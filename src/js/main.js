@@ -1,4 +1,3 @@
-//import Sortable from "sortablejs";
 import { Sortable, MultiDrag } from "sortablejs";
 Sortable.mount(new MultiDrag());
 
@@ -49,6 +48,38 @@ Sortable.mount(new MultiDrag());
               submitButton.text(buttonText);
             },
           });
+        }
+      });
+
+      // Order by price
+      $("#rwpp-sort-by-price").on("click", function () {
+        var submitButton = $(this);
+        var buttonText = submitButton.text();
+        submitButton.attr("disabled", "true");
+        submitButton.text("Processing...");
+
+        sortable.sort(SortData(), true);
+        var sort_orders = sortable.toArray();
+
+        submitButton.removeAttr("disabled");
+        submitButton.text(buttonText);
+
+
+        function comparator(a, b) {
+          if (parseFloat(a.dataset.price) < parseFloat(b.dataset.price))
+            return -1;
+          if (parseFloat(a.dataset.price) > parseFloat(b.dataset.price))
+            return 1;
+          return 0;
+        }
+
+        // Function to sort Data
+        function SortData() {
+          var subjects =
+            document.querySelectorAll("[data-price]");
+          var subjectsArray = Array.from(subjects);
+          var sorted = subjectsArray.sort(comparator);
+          return sorted.map(x => x.dataset.id);
         }
       });
 
