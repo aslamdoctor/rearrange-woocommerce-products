@@ -2,3 +2,14 @@
 @import "./rwpp-products-list";
 @import "./rwpp-product";
 @import "./rwpp-button";
+
+.rwpp-content-container {
+    display: flex;
+}
+
+.rwpp-fixed-button-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+}

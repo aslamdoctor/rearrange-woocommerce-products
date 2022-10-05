@@ -4,21 +4,25 @@
   border: 1px solid #ccc;
   border-radius: 3px;
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
   margin-bottom: 10px;
+
   .rwpp-product-main {
     padding: 5px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .rwpp-product-title {
       font-weight: 500;
       flex: 1;
       padding-right: 30px;
     }
+
     span.rwpp-product-movement {
       display: inline-block;
       width: 155px;
+
       span.dashicons {
         cursor: pointer;
         border: 1px solid #4e4e4e;
@@ -46,21 +50,26 @@
       width: 120px;
       height: auto;
     }
+
     .rwpp-product-details {
       flex: 1;
       padding-left: 15px;
+
       .rwpp-product-name {
         font-size: 16px;
         margin-bottom: 5px;
       }
+
       .rwpp-product-sku {
         margin-bottom: 5px;
       }
+
       .button {
         margin-top: 10px;
         margin-right: 5px;
       }
     }
+
     &.active {
       display: flex;
     }
