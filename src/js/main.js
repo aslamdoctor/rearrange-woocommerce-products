@@ -54,16 +54,12 @@ Sortable.mount(new MultiDrag());
       // Order by price
       $("#rwpp-sort-by-price").on("click", function () {
         var submitButton = $(this);
+        console.log(submitButton);
         var buttonText = submitButton.text();
         submitButton.attr("disabled", "true");
         submitButton.text("Processing...");
 
         sortable.sort(SortData(), true);
-        var sort_orders = sortable.toArray();
-
-        submitButton.removeAttr("disabled");
-        submitButton.text(buttonText);
-
 
         function comparator(a, b) {
           if (parseFloat(a.dataset.price) < parseFloat(b.dataset.price))
@@ -73,14 +69,72 @@ Sortable.mount(new MultiDrag());
           return 0;
         }
 
-        // Function to sort Data
-        function SortData() {
+        async function SortData() {
           var subjects =
             document.querySelectorAll("[data-price]");
           var subjectsArray = Array.from(subjects);
-          var sorted = subjectsArray.sort(comparator);
+          let sorted = subjectsArray.sort(comparator);
+
+          submitButton.removeAttr("disabled");
+          submitButton.text(buttonText);
+
           return sorted.map(x => x.dataset.id);
         }
+      });
+
+      $("#rwpp-upgrades-bottom").on("click", function () {
+        var submitButton = $(this);
+        var buttonText = submitButton.text();
+        submitButton.attr("disabled", "true");
+        submitButton.text("Processing...");
+
+        sortable.sort(MoveData(), true);
+
+        submitButton.removeAttr("disabled");
+        submitButton.text(buttonText);
+
+        function MoveData() {
+          var subjects =
+            document.querySelectorAll("[data-upgrade]");
+          var subjectsArray = Array.from(subjects);
+          var upgrade = [];
+          subjectsArray.forEach(function (item) {
+            if (item.dataset.upgrade === "true") {
+              subjectsArray.splice(subjectsArray.indexOf(item), 1);
+              upgrade.push(item);
+            }
+          });
+          var sorted = subjectsArray.concat(upgrade);
+          return sorted.map(x => x.dataset.id);
+        }
+      });
+
+      $("#rwpp-best-top").on("click", function () {
+        var submitButton = $(this);
+        var buttonText = submitButton.text();
+        submitButton.attr("disabled", "true");
+        submitButton.text("Processing...");
+
+        sortable.sort(MoveData(), true);
+
+        submitButton.removeAttr("disabled");
+        submitButton.text(buttonText);
+
+        function MoveData() {
+          var subjects =
+            document.querySelectorAll("[data-bestseller]");
+          var subjectsArray = Array.from(subjects);
+          var bestseller = [];
+          subjectsArray.forEach(function (item) {
+            if (item.dataset.bestseller === "true") {
+              subjectsArray.splice(subjectsArray.indexOf(item), 1);
+              bestseller.push(item);
+            }
+          });
+          var sorted = bestseller.concat(subjectsArray);
+          return sorted.map(x => x.dataset.id);
+        }
+
       });
 
       // Move item to Top
@@ -143,7 +197,7 @@ Sortable.mount(new MultiDrag());
 
   // Report when the sort order has changed
   function reportActivity() {
-    //console.log("The sort order has changed");
+    console.log("The sort order has changed");
   }
 
   function updateQueryStringParameter(uri, key, value) {
