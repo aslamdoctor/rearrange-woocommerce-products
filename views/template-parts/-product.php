@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Product Box
  *
@@ -6,10 +7,14 @@
  */
 
 if (!defined('ABSPATH')) {
-	exit; // Exit if accessed directly.
+    exit; // Exit if accessed directly.
 }
+
+
 ?>
 <div class="rwpp-product" data-price="<?php echo esc_attr($product->get_price()); ?>"
+    data-upgrade="<?php echo esc_attr(is_upgrade($product) ? 'true' : 'false'); ?>"
+    data-bestseller="<?php echo esc_attr(is_bestseller($product) ? 'true' : 'false'); ?>"
     data-id="<?php echo esc_attr($post->ID); ?>">
 
     <div class="rwpp-product-main">
@@ -30,15 +35,18 @@ if (!defined('ABSPATH')) {
     <!-- .rwpp-product-main -->
 
     <div class="rwpp-product-info">
-        <?php echo $product->get_image(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+        <?php echo $product->get_image(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        ?>
         <div class="rwpp-product-details">
             <div class="rwpp-product-name"><strong><?php the_title(); ?></strong> (ID:
                 <?php echo esc_html($post->ID); ?>)</div>
             <div class="rwpp-product-sku">SKU:
-                <?php echo $product->get_sku(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                <?php echo $product->get_sku(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                ?>
             </div>
             <div class="rwpp-product-price">
-                <?php echo $product->get_price_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                <?php echo $product->get_price_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                ?>
             </div>
             <a href="<?php the_permalink(); ?>" class="button"
                 target="_blank"><?php echo esc_html_e('View Product', 'rearrange-woocommerce-products'); ?></a>
