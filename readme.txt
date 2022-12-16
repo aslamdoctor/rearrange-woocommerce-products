@@ -4,7 +4,7 @@ Donate link: http://paypal.me/aslamdoctor
 Tags: woocommerce, ecommerce, product, reorder, sort, sortbycategory, Woo
 Requires at least: 4.6
 Tested up to: 5.9.3
-Stable tag: 4.1.1
+Stable tag: 4.1.2
 Requires PHP: 7.0.0
 License: GPLv3 or later License
 URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -92,6 +92,11 @@ If you want to fix a bug in the plugin or add new features, feel free to fork th
 5. Shortcut link under Categories section to sort by categories
 
 == ChangeLog ==
+
+= Version 4.1.2 =
+* tested with wordpress version 6.1.1
+* tested with woocommerce version 7.2.0
+* added page for troubleshooting guidelines
 
 = Version 4.1.1 =
 * Added translations for:

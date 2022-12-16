@@ -1,6 +1,13 @@
 #rwpp-container .nav-tab-wrapper {
   margin-bottom: 20px;
 }
+#rwpp-container .nav-tab-wrapper a img {
+  width: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -3px;
+  margin-right: 5px;
+}
 #rwpp-container #rwpp-response {
   margin-top: 20px;
 }
@@ -29,21 +36,13 @@
 }
 .rwpp-product .rwpp-product-main {
   padding: 5px 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
 .rwpp-product .rwpp-product-main .rwpp-product-title {
   font-weight: 500;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   padding-right: 30px;
 }
 .rwpp-product .rwpp-product-main span.rwpp-product-movement {
@@ -65,12 +64,8 @@
 .rwpp-product .rwpp-product-info {
   background-color: #f5f3f3;
   padding: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
   display: none;
 }
 .rwpp-product .rwpp-product-info img {
@@ -78,9 +73,7 @@
   height: auto;
 }
 .rwpp-product .rwpp-product-info .rwpp-product-details {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   padding-left: 15px;
 }
 .rwpp-product .rwpp-product-info .rwpp-product-details .rwpp-product-name {
@@ -95,8 +88,6 @@
   margin-right: 5px;
 }
 .rwpp-product .rwpp-product-info.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .rwpp-product.ghost {
