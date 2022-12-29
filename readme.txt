@@ -3,7 +3,7 @@ Contributors: aslamdoctor
 Donate link: http://paypal.me/aslamdoctor
 Tags: woocommerce, ecommerce, product, reorder, sort, sortbycategory, Woo
 Requires at least: 4.6
-Tested up to: 5.9.3
+Tested up to: 6.1
 Stable tag: 4.1.2
 Requires PHP: 7.0.0
 License: GPLv3 or later License
