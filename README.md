@@ -1,8 +1,12 @@
 # Rearrange Woocommerce Products
 
-Rearrange Woocommerce Products is a WordPress Plugin that allows you to **rearrange/reorder** the default sort order of the products on Woocommerce Shop Page. It also allows to rearrange products based on specific category.
+Introducing Rearrange Woocommerce Products: The Ultimate Plugin to customize Your Shop Page Sort Order
 
-This is very easy to use plugin with **drag & drop** functionality to rearrange the products.
+Enhance your Woocommerce shopping experience with Rearrange Woocommerce Products, a powerful plugin designed to give you complete control over the sort order of your products. Whether you want to rearrange the default sort order or customize it based on specific categories, this plugin has got you covered.
+
+With its intuitive "drag & drop" functionality, Rearrange Woocommerce Products makes it incredibly easy to reorder your products. Say goodbye to tedious manual sorting - simply drag and drop your products into the desired positions effortlessly.
+
+Experience seamless navigation and improved user engagement by optimizing your shop page's sort order. Download Rearrange Woocommerce Products now and revolutionize the way you showcase your products.
 
 ## Features
 
@@ -38,7 +42,3 @@ This will fix the issue.
 ## Plugin Demo
 
 [![Rearrange Woocommerce Products - Demo - WordPress Plugin](https://img.youtube.com/vi/3JFmaoYjZyE/0.jpg)](https://www.youtube.com/watch?v=3JFmaoYjZyE "Rearrange Woocommerce Products (V3) - Demo - WordPress Plugin")
-
-## Contribute
-
-If you want to fix a bug in the plugin or add new features, feel free to fork this repo and follow the `CONTRIBUTING.md` file for guidelines.

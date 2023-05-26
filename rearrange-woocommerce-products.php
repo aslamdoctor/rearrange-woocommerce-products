@@ -3,7 +3,7 @@
  * Plugin Name: Rearrange Woocommerce Products
  * Plugin URI: https://wordpress.org/plugins/rearrange-woocommerce-products/
  * Description: a WordPress plugin to Rearrange Woocommerce Products listed on the Shop page
- * Version: 4.1.2
+ * Version: 4.1.3
  * Author: Aslam Doctor
  * Author URI: https://aslamdoctor.com/
  * Developer: Aslam Doctor
@@ -13,7 +13,7 @@
  * Requires at least: 4.6
  *
  * WC requires at least: 4.3
- * WC tested up to: 7.2.0
+ * WC tested up to: 7.7.0
  *
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -66,6 +66,8 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 
 			add_action( 'save_post_product', array( $this, 'new_product_added' ), 10, 3 );
 			add_action( 'pre_get_posts', array( $this, 'sort_products_by_category' ), 999 );
+
+			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_settings_link_under_plugins_page' ) );
 		}
 
 		/**
@@ -80,7 +82,6 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		public static function deactivate() {
 		}
 
-
 		/**
 		 * Load plugin text domain for translation purpose
 		 *
@@ -90,13 +91,31 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 			load_plugin_textdomain( 'rearrange-woocommerce-products', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 		}
 
+
+		/**
+		 * Add "Rearrange" link under plugins list
+		 *
+		 * @param [array] $links Array of links.
+		 * @return array
+		 */
+		public function add_settings_link_under_plugins_page( $actions ) {
+			$plugin_links = array(
+				'<a href="' . admin_url( 'admin.php?page=rwpp-page' ) . '">' . esc_html__( 'Rearrange Products', 'rearrange-woocommerce-products' ) . '</a>',
+				'<a href="' . admin_url( 'admin.php?page=rwpp-sortby-categories-page' ) . '">' . esc_html__( 'Sort by Categories', 'rearrange-woocommerce-products' ) . '</a>',
+			);
+			$actions      = array_merge( $plugin_links, $actions );
+			return $actions;
+		}
+
+
 		/**
 		 * Enqueue CSS and JS files
 		 *
 		 * @param [String] $hook Standard WordPress hook.
 		 */
 		public function enqueue_assets( $hook ) {
-			if ( 'product_page_rwpp-page' !== $hook ) {
+			// die($hook);
+			if ( 'toplevel_page_rwpp-page' !== $hook && 'rearrange-products_page_rwpp-sortby-categories-page' !== $hook && 'rearrange-products_page_rwpp-troubleshooting-page' !== $hook ) {
 				return;
 			}
 
@@ -164,13 +183,32 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		 * @param [String] $role Current User role.
 		 */
 		public function add_pages( $role ) {
-			add_submenu_page(
-				'edit.php?post_type=product',
+			add_menu_page( 
 				__( 'Rearrange Products', 'rearrange-woocommerce-products' ),
 				__( 'Rearrange Products', 'rearrange-woocommerce-products' ),
 				$role,
 				'rwpp-page',
-				array( $this, 'add_pages_callback' )
+				array( $this, 'add_pages_callback' ),
+				'dashicons-screenoptions',
+				'55.5'
+			);
+			
+			add_submenu_page( 
+				'rwpp-page',
+				__( 'Sort by Categories', 'rearrange-woocommerce-products' ),
+				__( 'Sort by Categories', 'rearrange-woocommerce-products' ),
+				$role,
+				'rwpp-sortby-categories-page',
+				array( $this, 'add_pages_callback' ),
+			);
+			
+			add_submenu_page( 
+				'rwpp-page',
+				__( 'Troubleshooting', 'rearrange-woocommerce-products' ),
+				__( 'Troubleshooting', 'rearrange-woocommerce-products' ),
+				$role,
+				'rwpp-troubleshooting-page',
+				array( $this, 'add_pages_callback' ),
 			);
 		}
 
@@ -288,7 +326,7 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		 * @param [Object] $term Term object.
 		 */
 		public function add_rearrange_link( $actions, $term ) {
-			$url                       = admin_url( 'edit.php?post_type=product&page=rwpp-page&current_tab=sortby-categories&term_id=' . $term->term_id );
+			$url                       = admin_url( 'admin.php?page=rwpp-page&current_tab=sortby-categories&term_id=' . $term->term_id );
 			$actions['rearrange_link'] = '<a href="' . $url . '" class="rearrange_link">' . __( 'Rearrange Products' ) . '</a>';
 			return $actions;
 		}
