@@ -19,13 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<li>Make sure it is set to “Default sorting (custom ordering + name)”</li>
 </ol>
 
-<h4>➡️ Some products are missing when sorted by categories? Follow the solution below:</h4>
-
-<p>The workaround solution for this is to simply go to <strong>Admin > Rearrange Products > Sort by Categories</strong> and then select each category one by one from the Dropdown, and <strong>DON’T click</strong> the “Save” button. <br>
-This will update all categories metadata into database one by one and will fix your issue. This is just a <strong>one-time process</strong> and it will fix your issue forever.</p>
-<p>What is happening here is that the categories that you have not organized, don’t have metadata(for sort order) in the database. And because of that, some products don’t appear on those categories.</p>
-
-<h4>➡️ If you have huge list of product and the plugin is not saving the sort order changes</h4>
+<h4>➡️ If you have huge list of product and the plugin is not saving the sort order changes.</h4>
 <p>
 	Then it may be issue with PHP configuration done on your server for <strong>memory_limit</strong> and <strong>max_execution_time</strong>. <br>
 	If you are not sure how to do that, please ask your web hosting provider to increase <strong>memory_limit</strong> and <strong>max_execution_time</strong> and try updating sort order after that.

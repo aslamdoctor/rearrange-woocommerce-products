@@ -20,9 +20,6 @@ if ( isset( $_GET['term_id'] ) && ! empty( $_GET['term_id'] ) ) { // phpcs:ignor
 
 	$meta_key = 'rwpp_sortorder_' . $term_id;
 
-	// store products sortorder inside post_meta (use menu_order by default).
-	$this->update_products_meta( $term_id );
-
 	$args['tax_query'] = array( // phpcs:ignore
 		array(
 			'taxonomy' => 'product_cat',

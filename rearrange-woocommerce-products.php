@@ -3,7 +3,7 @@
  * Plugin Name: Rearrange Woocommerce Products
  * Plugin URI: https://wordpress.org/plugins/rearrange-woocommerce-products/
  * Description: a WordPress plugin to Rearrange Woocommerce Products listed on the Shop page
- * Version: 4.1.3
+ * Version: 4.1.4
  * Author: Aslam Doctor
  * Author URI: https://aslamdoctor.com/
  * Developer: Aslam Doctor
@@ -13,7 +13,7 @@
  * Requires at least: 4.6
  *
  * WC requires at least: 4.3
- * WC tested up to: 7.7.0
+ * WC tested up to: 7.9.0
  *
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -183,7 +183,7 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		 * @param [String] $role Current User role.
 		 */
 		public function add_pages( $role ) {
-			add_menu_page( 
+			add_menu_page(
 				__( 'Rearrange Products', 'rearrange-woocommerce-products' ),
 				__( 'Rearrange Products', 'rearrange-woocommerce-products' ),
 				$role,
@@ -192,8 +192,8 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 				'dashicons-screenoptions',
 				'55.5'
 			);
-			
-			add_submenu_page( 
+
+			add_submenu_page(
 				'rwpp-page',
 				__( 'Sort by Categories', 'rearrange-woocommerce-products' ),
 				__( 'Sort by Categories', 'rearrange-woocommerce-products' ),
@@ -201,8 +201,8 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 				'rwpp-sortby-categories-page',
 				array( $this, 'add_pages_callback' ),
 			);
-			
-			add_submenu_page( 
+
+			add_submenu_page(
 				'rwpp-page',
 				__( 'Troubleshooting', 'rearrange-woocommerce-products' ),
 				__( 'Troubleshooting', 'rearrange-woocommerce-products' ),
@@ -337,16 +337,27 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		 * @param [Object] $query WP_Query variable.
 		 */
 		public function sort_products_by_category( $query ) {
-			if ( is_product_category() && $query->is_main_query() && ! is_admin() ) {
+			if ( is_tax( 'product_cat' ) && $query->is_main_query() && ! is_admin() ) {
 				$term    = get_queried_object();
 				$term_id = $term->term_id;
 				if ( $term && $term_id ) {
-					$meta_key = 'rwpp_sortorder_' . $term_id;
-					if ( $this->meta_field_exists( $meta_key ) ) {
-						$query->set( 'meta_key', $meta_key );
-						$query->set( 'orderby', 'meta_value_num menu_order title' );
-						$query->set( 'order', 'ASC' );
-					}
+					$meta_key   = 'rwpp_sortorder_' . $term_id;
+					$meta_query = array(
+						'meta_query' => array(
+							'relation' => 'OR',
+							array(
+								'key'     => $meta_key,
+								'compare' => 'EXISTS',
+							),
+							array(
+								'key'     => $meta_key,
+								'compare' => 'NOT EXISTS',
+							),
+						),
+					);
+					$query->set( 'meta_query', $meta_query );
+					$query->set( 'orderby', 'meta_value_num menu_order title' );
+					$query->set( 'order', 'ASC' );
 				}
 			}
 		}

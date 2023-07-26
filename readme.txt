@@ -1,11 +1,11 @@
 === Rearrange Woocommerce Products ===
 Contributors: aslamdoctor
-Donate link: http://paypal.me/aslamdoctor
+Donate link: https://github.com/sponsors/aslamdoctor
 Tags: woocommerce, ecommerce, product, reorder, rearrange, sort, sortbycategory, Woo
 Requires at least: 4.6
-Tested up to: 6.2.0
-Stable tag: 4.1.3
-Requires PHP: 7.0.0
+Tested up to: 6.2.2
+Stable tag: 4.1.4
+Requires PHP: 7.4.0
 License: GPLv3 or later License
 URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -66,11 +66,6 @@ Click on "Sort by Categories" tab to arrange products by Categories.
 3. Now here check for “Default Product Sorting”.
 4. Make sure it is set to “Default sorting (custom ordering + name)”
 
-**Some products are missing when sorted by categories? Follow the solution below:**
-
-The workaround solution for this is to simply go to **Admin > Rearrange Products > Sort by Categories** and then select each category one by one from the Dropdown, and DON'T click the “Save” button. This will update all categories metadata into database one by one and will fix your issue. This is just a **one-time process** and it will fix your issue forever.
-What is happening here is that the categories that you have not organized, don’t have metadata(for sort order) in the database. And because of that, some products don’t appear on those categories.
-
 **If you have huge list of product and the plugin is not saving the sort order changes** 
 
 Then it may be issue with PHP configuration done on your server for `memory_limit` and `max_execution_time`.
@@ -92,6 +87,13 @@ This will fix the issue.
 5. Shortcut link under Categories section to sort by categories
 
 == ChangeLog ==
+
+= Version 4.1.4 =
+* tested with wordpress version 6.2.2
+* tested with woocommerce version 7.9.0
+* Added fix where products were missing on categories pages
+* Added fix where is_product_category() was not working
+* other minor bug fixes & cleanup
 
 = Version 4.1.3 =
 * tested with wordpress version 6.2.0

@@ -20,5 +20,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 		
 		<a href="<?php echo esc_attr( admin_url( 'admin.php?page=rwpp-troubleshooting-page' ) ); ?>" class="nav-tab <?php echo ( isset( $_GET['page'] ) && ! empty( $_GET['page'] ) && 'rwpp-troubleshooting-page' === $_GET['page'] ) ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Troubleshooting', 'rearrange-woocommerce-products' ); ?></a>
 		
-		<a href="http://paypal.me/aslamdoctor" target="_blank" class="nav-tab"><img src="<?php echo plugin_dir_url( __DIR__ ) . '../img/icon-tea.png'; ?>." alt=""><?php esc_html_e( 'Buy me a Chai', 'rearrange-woocommerce-products' ); ?></a>
+		<a href="https://github.com/sponsors/aslamdoctor" target="_blank" class="nav-tab"><img src="<?php echo plugin_dir_url( __DIR__ ) . '../img/icon-tea.png'; ?>." alt=""><?php esc_html_e( 'Sponsor me', 'rearrange-woocommerce-products' ); ?></a>
 	</h2>
