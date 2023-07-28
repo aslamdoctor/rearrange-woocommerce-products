@@ -337,6 +337,10 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		 * @param [Object] $query WP_Query variable.
 		 */
 		public function sort_products_by_category( $query ) {
+			if ( isset( $_GET['orderby'] ) && 'date' === $_GET['orderby'] ) {
+				return;
+			}
+
 			if ( is_tax( 'product_cat' ) && $query->is_main_query() && ! is_admin() ) {
 				$term    = get_queried_object();
 				$term_id = $term->term_id;
