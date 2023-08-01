@@ -4,7 +4,7 @@ Donate link: https://github.com/sponsors/aslamdoctor
 Tags: woocommerce, ecommerce, product, reorder, rearrange, sort, sortbycategory, Woo
 Requires at least: 4.6
 Tested up to: 6.2.2
-Stable tag: 4.1.5
+Stable tag: 4.1.6
 Requires PHP: 7.4.0
 License: GPLv3 or later License
 URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -87,6 +87,10 @@ This will fix the issue.
 5. Shortcut link under Categories section to sort by categories
 
 == ChangeLog ==
+
+= Version 4.1.6 =
+* Fix enqueue_assets hook not checking hook name properly when site is using different language. 
+Ref: https://wordpress.org/support/topic/products-are-no-longer-displayed-in-categories/#post-16934448
 
 = Version 4.1.5 =
 * Fix sort by "Latest" option not working
