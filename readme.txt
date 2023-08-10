@@ -3,8 +3,8 @@ Contributors: aslamdoctor
 Donate link: https://github.com/sponsors/aslamdoctor
 Tags: woocommerce, ecommerce, product, reorder, rearrange, sort, sortbycategory, Woo
 Requires at least: 4.6
-Tested up to: 6.2.2
-Stable tag: 4.1.6
+Tested up to: 6.3
+Stable tag: 4.1.7
 Requires PHP: 7.4.0
 License: GPLv3 or later License
 URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -87,6 +87,11 @@ This will fix the issue.
 5. Shortcut link under Categories section to sort by categories
 
 == ChangeLog ==
+
+= Version 4.1.7 =
+* Fix - under admin, some products not visible while sorting by category
+* tested with wordpress version 6.3
+* tested with woocommerce version 8.0.1
 
 = Version 4.1.6 =
 * Fix enqueue_assets hook not checking hook name properly when site is using different language. 

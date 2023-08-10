@@ -29,6 +29,18 @@ if ( isset( $_GET['term_id'] ) && ! empty( $_GET['term_id'] ) ) { // phpcs:ignor
 		),
 	);
 
+	$args['meta_query'] = array(
+		'relation' => 'OR',
+		array(
+			'key'     => $meta_key,
+			'compare' => 'EXISTS',
+		),
+		array(
+			'key'     => $meta_key,
+			'compare' => 'NOT EXISTS',
+		),
+	);
+
 	if ( $this->meta_field_exists( $meta_key ) ) {
 		$args['meta_key'] = $meta_key; // phpcs:ignore
 		$args['orderby']  = 'meta_value_num menu_order title';
