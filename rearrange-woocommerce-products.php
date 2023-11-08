@@ -3,7 +3,7 @@
  * Plugin Name: Rearrange Woocommerce Products
  * Plugin URI: https://wordpress.org/plugins/rearrange-woocommerce-products/
  * Description: a WordPress plugin to Rearrange Woocommerce Products listed on the Shop page
- * Version: 4.1.7
+ * Version: 4.2.0
  * Author: Aslam Doctor
  * Author URI: https://aslamdoctor.com/
  * Developer: Aslam Doctor
@@ -13,7 +13,7 @@
  * Requires at least: 4.6
  *
  * WC requires at least: 4.3
- * WC tested up to: 8.0.1
+ * WC tested up to: 8.2.1
  *
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -68,6 +68,8 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 			add_action( 'pre_get_posts', array( $this, 'sort_products_by_category' ), 999 );
 
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_settings_link_under_plugins_page' ) );
+
+			add_action( 'before_woocommerce_init', array( $this, 'declare_hpos_compatibility' ) );
 		}
 
 		/**
@@ -91,11 +93,20 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 			load_plugin_textdomain( 'rearrange-woocommerce-products', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 		}
 
+		/**
+		 * Declare HPOS compatibility for the plugin
+		 */
+		public function declare_hpos_compatibility() {
+			if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+			}
+		}
+
 
 		/**
 		 * Add "Rearrange" link under plugins list
 		 *
-		 * @param [array] $links Array of links.
+		 * @param [array] $actions Array of actions.
 		 * @return array
 		 */
 		public function add_settings_link_under_plugins_page( $actions ) {
@@ -119,8 +130,6 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 			}
 
 			$pagenow = sanitize_text_field( $_REQUEST['page'] );
-
-			// die($pagenow);
 
 			if ( 'rwpp-page' !== $pagenow && 'rwpp-sortby-categories-page' !== $pagenow && 'rwpp-troubleshooting-page' !== $pagenow ) {
 				return;
