@@ -3,7 +3,7 @@
  * Plugin Name: Rearrange Woocommerce Products
  * Plugin URI: https://wordpress.org/plugins/rearrange-woocommerce-products/
  * Description: a WordPress plugin to Rearrange Woocommerce Products listed on the Shop page
- * Version: 4.2.0
+ * Version: 4.3.0
  * Author: Aslam Doctor
  * Author URI: https://aslamdoctor.com/
  * Developer: Aslam Doctor
@@ -13,7 +13,7 @@
  * Requires at least: 4.6
  *
  * WC requires at least: 4.3
- * WC tested up to: 8.2.1
+ * WC tested up to: 8.9.1
  *
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -53,6 +53,7 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 			register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
 			add_action( 'admin_init', array( $this, 'check_required_plugin' ) );
+			add_action( 'admin_init', array( $this, 'register_settings' ) );
 
 			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 
@@ -66,6 +67,9 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 
 			add_action( 'save_post_product', array( $this, 'new_product_added' ), 10, 3 );
 			add_action( 'pre_get_posts', array( $this, 'sort_products_by_category' ), 999 );
+
+			add_filter( 'woocommerce_shortcode_products_query', array( $this, 'modify_product_category_shortcode_query' ), 10, 2 );
+
 
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_settings_link_under_plugins_page' ) );
 
@@ -131,7 +135,7 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 
 			$pagenow = sanitize_text_field( $_REQUEST['page'] );
 
-			if ( 'rwpp-page' !== $pagenow && 'rwpp-sortby-categories-page' !== $pagenow && 'rwpp-troubleshooting-page' !== $pagenow ) {
+			if ( 'rwpp-page' !== $pagenow && 'rwpp-sortby-categories-page' !== $pagenow && 'rwpp-settings-page' !== $pagenow && 'rwpp-troubleshooting-page' !== $pagenow ) {
 				return;
 			}
 
@@ -150,6 +154,13 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 				)
 			);
 			wp_enqueue_script( 'rwpp_js' );
+		}
+
+		/**
+		 * Register plugin settings
+		 */
+		public function register_settings() {
+			register_setting( 'rwpp-settings-group', 'rwpp_effected_loops' );
 		}
 
 		/**
@@ -215,6 +226,15 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 				__( 'Sort by Categories', 'rearrange-woocommerce-products' ),
 				$role,
 				'rwpp-sortby-categories-page',
+				array( $this, 'add_pages_callback' ),
+			);
+
+			add_submenu_page(
+				'rwpp-page',
+				__( 'Settings', 'rearrange-woocommerce-products' ),
+				__( 'Settings', 'rearrange-woocommerce-products' ),
+				$role,
+				'rwpp-settings-page',
 				array( $this, 'add_pages_callback' ),
 			);
 
@@ -348,6 +368,46 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		}
 
 		/**
+		 * Modify query for woocommerce product category shortcode.
+		 *
+		 * @param array $query_args Query args.
+		 * @param array $attributes Attributes.
+		 * @return array Query args.
+		 */
+		public function modify_product_category_shortcode_query( $query_args, $attributes ) {
+			// Check if the product_cat taxonomy query is being used.
+			if ( get_option( 'rwpp_effected_loops' ) && isset( $query_args['tax_query'] ) && isset( $attributes['category'] ) ) {
+				$term = get_term_by( 'slug', $attributes['category'], 'product_cat' );
+				if ( $term ) {
+					$term_id = $term->term_id;
+
+					if ( $term_id ) {
+						$meta_key   = 'rwpp_sortorder_' . $term_id;
+						$meta_query = array(
+							'meta_query' => array(
+								'relation' => 'OR',
+								array(
+									'key'     => $meta_key,
+									'compare' => 'EXISTS',
+								),
+								array(
+									'key'     => $meta_key,
+									'compare' => 'NOT EXISTS',
+								),
+							),
+						);
+						$query_args['meta_query'] = $meta_query;
+						$query_args['orderby'] = 'meta_value_num menu_order title';
+						$query_args['order'] = 'ASC';
+					}
+				}
+			}
+
+			return $query_args;
+		}
+
+
+		/**
 		 * Modify Products loop query to sort by categories
 		 *
 		 * @param [Object] $query WP_Query variable.
@@ -357,7 +417,13 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 				return;
 			}
 
-			if ( is_tax( 'product_cat' ) && $query->is_main_query() && ! is_admin() ) {
+			if ( get_option( 'rwpp_effected_loops' ) ) {
+				$checker = is_tax( 'product_cat' ) && ! is_admin();
+			} else {
+				$checker = is_tax( 'product_cat' ) && $query->is_main_query() && ! is_admin();
+			}
+
+			if ( $checker ) {
 				$term    = get_queried_object();
 				$term_id = $term->term_id;
 				if ( $term && $term_id ) {

@@ -3,8 +3,8 @@ Contributors: aslamdoctor
 Donate link: https://github.com/sponsors/aslamdoctor
 Tags: woocommerce, ecommerce, product, reorder, rearrange, sort, sortbycategory, Woo
 Requires at least: 4.6
-Tested up to: 6.4
-Stable tag: 4.2.0
+Tested up to: 6.5.3
+Stable tag: 4.3.0
 Requires PHP: 7.4.0
 License: GPLv3 or later License
 URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -59,6 +59,10 @@ Click on "Sort by Categories" tab to arrange products by Categories.
 1. Products rearranging CAN NOT be undone after deactivating or deleting the plugin if you are doing sorting on all products. As it directly updates the "menu_order" property of the products.
 2. Products rearranging WILL BE undone after deactivating or deleting the plugin if you are doing sorting on products by categories.
 
+= Can I also update the sort order of products added using woocommerce shortcode like this `[product_category category="my-category-slug"]` ? =
+
+Yes, you can override the default sort order of the products added using shortcode. To do that Go to "Admin > Rearrange Products > Settings" and enable/check the option that says "All Loops (including shortcodes)".
+
 == Troubleshooting ==
 
 **If the sort order you changed is not working on your Shop page, please check below is set properly.**
@@ -68,7 +72,7 @@ Click on "Sort by Categories" tab to arrange products by Categories.
 3. Now here check for “Default Product Sorting”.
 4. Make sure it is set to “Default sorting (custom ordering + name)”
 
-**If you have huge list of product and the plugin is not saving the sort order changes** 
+**If you have huge list of product and the plugin is not saving the sort order changes**
 
 Then it may be issue with PHP configuration done on your server for `memory_limit` and `max_execution_time`.
 Ask your web hosting provider to increase `memory_limit` and `max_execution_time` and try updating sort order after that.
@@ -90,6 +94,11 @@ This will fix the issue.
 
 == ChangeLog ==
 
+= Version 4.3.0 =
+* Added settings to enable/disable override main loop or all loops
+* tested with wordpress version 6.5.3
+* tested with woocommerce version 8.9.1
+
 = Version 4.2.0 =
 * Make plugin compatible with HPOS ( High-Performance Order Storage )
 * tested with wordpress version 6.4
@@ -101,7 +110,7 @@ This will fix the issue.
 * tested with woocommerce version 8.0.1
 
 = Version 4.1.6 =
-* Fix enqueue_assets hook not checking hook name properly when site is using different language. 
+* Fix enqueue_assets hook not checking hook name properly when site is using different language.
 Ref: https://wordpress.org/support/topic/products-are-no-longer-displayed-in-categories/#post-16934448
 
 = Version 4.1.5 =
@@ -132,8 +141,8 @@ Ref: https://wordpress.org/support/topic/products-are-no-longer-displayed-in-cat
 - French (France)
 - Spanish (Colombia)
 - Spanish (Venezuela)
-- Russian 
-- Hindi 
+- Russian
+- Hindi
 - Spanish (Ecuador)
 - Chinese (China)
 - Spanish (Spain)
@@ -188,14 +197,14 @@ Ref: https://wordpress.org/support/topic/products-are-no-longer-displayed-in-cat
 * Minor fix for checking product loop inside pre_get_posts hook
 
 = Version 3.0.4 =
-* Fixed: While sorting by categories, some products that are added recently were not visible. 
-* Code re-factoring and cleanup. 
+* Fixed: While sorting by categories, some products that are added recently were not visible.
+* Code re-factoring and cleanup.
 
 = Version 3.0.3 =
-* Fixed: Keep default sort order on frontend if it was not updated for Categories. 
+* Fixed: Keep default sort order on frontend if it was not updated for Categories.
 
 = Version 3.0.2 =
-* Fixed: Category orders not showing any products due to meta_query not found. 
+* Fixed: Category orders not showing any products due to meta_query not found.
 
 = Version 3.0.1 =
 * Re-published the files as in v3.0.0, the files were not published properly
@@ -269,7 +278,7 @@ Ref: https://wordpress.org/support/topic/products-are-no-longer-displayed-in-cat
 
 = Version 1.1.0 =
 
-* Added capability to handle huge amount of products.     
+* Added capability to handle huge amount of products.
 * Combined multiple sql update queries into one query.
 
 = Version 1.0.0 =
