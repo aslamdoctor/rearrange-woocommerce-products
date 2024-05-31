@@ -1,7 +1,7 @@
 === Rearrange Woocommerce Products ===
 Contributors: aslamdoctor
 Donate link: https://github.com/sponsors/aslamdoctor
-Tags: woocommerce, ecommerce, product, reorder, rearrange, sort, sortbycategory, Woo
+Tags: woocommerce, product, reorder, rearrange, sort
 Requires at least: 4.6
 Tested up to: 6.5.3
 Stable tag: 4.3.0
