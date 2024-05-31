@@ -59,9 +59,9 @@ Click on "Sort by Categories" tab to arrange products by Categories.
 1. Products rearranging CAN NOT be undone after deactivating or deleting the plugin if you are doing sorting on all products. As it directly updates the "menu_order" property of the products.
 2. Products rearranging WILL BE undone after deactivating or deleting the plugin if you are doing sorting on products by categories.
 
-= Can I also update the sort order of products added using woocommerce shortcode like this `[product_category category="my-category-slug"]` ? =
+= Can I also update the sort order of products added using woocommerce shortcode ? =
 
-Yes, you can override the default sort order of the products added using shortcode. To do that Go to "Admin > Rearrange Products > Settings" and enable/check the option that says "All Loops (including shortcodes)".
+Yes, you can override the default sort order of the products added using shortcode like this `[product_category category="my-category-slug"]`. To do that Go to "Admin > Rearrange Products > Settings" and enable/check the option that says "All Loops (including shortcodes)".
 
 == Troubleshooting ==
 
