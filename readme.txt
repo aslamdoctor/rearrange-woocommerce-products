@@ -8,7 +8,7 @@ Requires PHP: 7.4.0
 License: GPLv3 or later License
 URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Boost WooCommerce Sales with Rearrange WooCommerce Products Plugin.
+Boost WooCommerce Sales with <strong>Rearrange WooCommerce Products</strong> Plugin.
 Easily customize your shop page by reordering products with a simple drag-and-drop interface.
 
 == Description ==
@@ -17,7 +17,7 @@ Take Full Control of Your WooCommerce Shop Page with Rearrange WooCommerce Produ
 
 Are you looking for a way to improve your WooCommerce shop page? The Rearrange WooCommerce Products plugin is the ultimate solution for customizing your product sort order. Designed specifically for WooCommerce-powered stores, this plugin empowers you to optimize the browsing experience and showcase your products in the best possible way.
 
-With intuitive drag-and-drop functionality, you can:
+With intuitive <strong>drag-and-drop</strong> functionality, you can:
 
 * Effortlessly reorder products on your WooCommerce shop page.
 * Customize sorting for specific categories or sub-categories.
@@ -28,12 +28,23 @@ With intuitive drag-and-drop functionality, you can:
 2. Improved SEO Performance: Organize products strategically to boost visibility and rankings.
 3. Increased Conversions: Present your best-selling, new, or featured products at the top of the page.
 
+== Features ==
+
+* Fully compatible with WooCommerce.
+* Drag-and-drop interface for quick sorting.
+* Custom sorting for categories or individual pages.
+* Lightweight and optimized for fast performance.
+
+
+<strong>Download Rearrange WooCommerce Products Plugin Today!</strong>
+Transform the way customers interact with your WooCommerce store and elevate your eCommerce game. Start reordering your products with ease and unlock the full potential of your shop page.
+
 ** Before using this plugin, ensure that WooCommerce is properly installed and activated on your website. **
 
 == Important Notes ==
 
 1. If you're using a page builder plugin to showcase your products, please be aware that this plugin may not be compatible. We recommend reaching out to the developers of your page builder plugin for further guidance.
-2. It's important to note that once you deactivate or delete the plugin, any rearrangements of all products cannot be reversed as it updates the 'menu_order' of the products.
+2. It's important to note that once you deactivate or delete the plugin, any rearrangements of all products cannot be reversed as it updates the ‘menu_order’ of the products.
 3. If you're reordering products by categories, please keep in mind that the rearrangements WILL BE reversed upon deactivating or deleting the plugin.
 
 == Installation ==
