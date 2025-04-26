@@ -45,6 +45,8 @@ Update changelog in `readme.txt`
 ```bash
 git add .
 git commit -m "Prepare release v1.2.3"
+git tag 1.2.3  # Replace with your current tag
+git push origin 1.2.3  # Replace with your current tag
 ```
 
 Also do git push so that the main repo will be up to date. **This will not run the deploy workflow, so don’t worry**
