@@ -14,6 +14,8 @@ jobs:
       run: |
         npm install
         npm run prod
+      with:
+        node-version: 22.14.0
 
     - name: WordPress Plugin SVN Deploy
       uses: 10up/action-wordpress-plugin-deploy@stable
