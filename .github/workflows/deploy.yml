@@ -1,0 +1,44 @@
+name: Deploy to WordPress.org
+on:
+  push:
+    tags:
+    - "*"
+jobs:
+  tag:
+    name: New tag
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build # Add a build step if needed
+      run: |
+        npm install
+        npm run prod
+
+    - name: WordPress Plugin SVN Deploy
+      uses: 10up/action-wordpress-plugin-deploy@stable
+      env:
+        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+        SLUG: rearrange-woocommerce-products # Replace with your plugin slug
+        ASSETS_DIR: assets # Optional - defaults to .wordpress-org
+      with:
+        exclude: |
+          .git
+          .github
+          .gitignore
+          node_modules
+          src
+          package.json
+          package-lock.json
+          README.md
+          .browserslistrc
+          .eslintrc
+          .prettierrc.json
+          .stylelintrc
+          composer.json
+          composer.lock
+          phpunit.xml
+          tests
+          webpack.config.js
+          webpack.mix.js
