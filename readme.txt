@@ -3,7 +3,7 @@ Contributors: aslamdoctor
 Donate link: https://github.com/sponsors/aslamdoctor
 Tags: woocommerce, product, reorder, rearrange, sort
 Requires at least: 6.6
-Tested up to: 6.7.1
+Tested up to: 6.8
 Requires PHP: 7.4.0
 License: GPLv3 or later License
 URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -102,6 +102,12 @@ This will fix the issue.
 5. Shortcut link under Categories section to sort by categories
 
 == ChangeLog ==
+
+= Version 4.3.2 =
+* fixed: is_tax was called incorrectly
+* fixed: settings for effected loops was not working properly
+* tested with wordpress version 6.8
+* tested with woocommerce version 9.8.2
 
 = Version 4.3.1 =
 * tested with wordpress version 6.7.1

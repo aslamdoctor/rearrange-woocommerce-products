@@ -3,7 +3,7 @@
  * Plugin Name: Rearrange Woocommerce Products
  * Plugin URI: https://wordpress.org/plugins/rearrange-woocommerce-products/
  * Description: a WordPress plugin to Rearrange Woocommerce Products listed on the Shop page
- * Version: 4.3.1
+ * Version: 4.3.2
  * Author: Aslam Doctor
  * Author URI: https://aslamdoctor.com/
  * Developer: Aslam Doctor
@@ -13,7 +13,7 @@
  * Requires at least: 6.6
  *
  * WC requires at least: 4.3
- * WC tested up to: 9.5.2
+ * WC tested up to: 9.8.2
  *
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define reusable paths for plugin globally
  */
-define( 'RWPP_LOCATION', dirname( __FILE__ ) );
+define( 'RWPP_LOCATION', __DIR__ );
 define( 'RWPP_LOCATION_URL', plugins_url( '', __FILE__ ) );
 define( 'RWPP_BASENAME', plugin_basename( __FILE__ ) );
 
@@ -281,11 +281,6 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 							$sql_query .= 'ELSE NULL END ) ';
 							$sql_query .= "WHERE ID IN ($fields_in) ";
 
-							/*
-							echo '<pre>';
-							print_r( $sql_query );
-							echo '</pre>'; */
-
 							$wpdb->query( $sql_query ); // phpcs:ignore
 
 							echo '<div class="notice notice-success is-dismissible">
@@ -308,7 +303,7 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 
 			if ( isset( $sort_orders ) ) {
 				$keys = array_keys( $sort_orders );
-				if ( $keys === array_filter( $keys, 'is_numeric' ) ) {
+				if ( array_filter( $keys, 'is_numeric' ) === $keys ) {
 					$sort_orders = array_combine(
 						array_map( 'intval', $keys ),
 						array_values( $sort_orders )
@@ -413,12 +408,17 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 		 * @param [Object] $query WP_Query variable.
 		 */
 		public function sort_products_by_category( $query ) {
+			// Only target the front-end main query.
+			if ( is_admin() || ! $query->is_main_query() ) {
+				return;
+			}
+
 			if ( isset( $_GET['orderby'] ) && 'date' === $_GET['orderby'] ) {
 				return;
 			}
 
 			if ( get_option( 'rwpp_effected_loops' ) ) {
-				$checker = is_tax( 'product_cat' ) && ! is_admin();
+				$checker = ! is_admin();
 			} else {
 				$checker = is_tax( 'product_cat' ) && $query->is_main_query() && ! is_admin();
 			}
