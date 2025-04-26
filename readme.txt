@@ -7,9 +7,9 @@ Tested up to: 6.8
 Requires PHP: 7.4.0
 License: GPLv3 or later License
 URI: http://www.gnu.org/licenses/gpl-3.0.html
+Stable Tag: 4.3.2
 
-Boost WooCommerce Sales with <strong>Rearrange WooCommerce Products</strong> Plugin.
-Easily customize your shop page by reordering products with a simple drag-and-drop interface.
+Boost WooCommerce sales with the Rearrange WooCommerce Products plugin. Easily reorder products with a simple drag-and-drop tool!
 
 == Description ==
 
@@ -44,7 +44,7 @@ Transform the way customers interact with your WooCommerce store and elevate you
 == Important Notes ==
 
 1. If you're using a page builder plugin to showcase your products, please be aware that this plugin may not be compatible. We recommend reaching out to the developers of your page builder plugin for further guidance.
-2. It's important to note that once you deactivate or delete the plugin, any rearrangements of all products cannot be reversed as it updates the ‘menu_order’ of the products.
+2. It's important to note that once you deactivate or delete the plugin, any rearrangements of all products cannot be reversed as it updates the 'menu_order' of the products.
 3. If you're reordering products by categories, please keep in mind that the rearrangements WILL BE reversed upon deactivating or deleting the plugin.
 
 == Installation ==
@@ -77,9 +77,9 @@ Yes, you can override the default sort order of the products added using shortco
 **If the sort order you changed is not working on your Shop page, please check below is set properly.**
 
 1. Go to Wordpress Admin > Appearance > Customize
-2. Select “Woocommerce” from left and go to “Product Catalogue”
-3. Now here check for “Default Product Sorting”.
-4. Make sure it is set to “Default sorting (custom ordering + name)”
+2. Select "Woocommerce" from left and go to "Product Catalogue"
+3. Now here check for "Default Product Sorting".
+4. Make sure it is set to "Default sorting (custom ordering + name)"
 
 **If you have huge list of product and the plugin is not saving the sort order changes**
 
