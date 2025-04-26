@@ -28,24 +28,3 @@ jobs:
         SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
         SLUG: rearrange-woocommerce-products # Replace with your plugin slug
         ASSETS_DIR: assets # Optional - defaults to .wordpress-org
-      with:
-        exclude: |
-          .git
-          .github
-          .gitignore
-          node_modules
-          src
-          package.json
-          package-lock.json
-          README.md
-          .browserslistrc
-          .eslintrc
-          .prettierrc.json
-          .stylelintrc
-          .nvmrc
-          composer.json
-          composer.lock
-          phpunit.xml
-          tests
-          webpack.config.js
-          webpack.mix.js
