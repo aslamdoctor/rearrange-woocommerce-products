@@ -13,6 +13,7 @@
 .stylelintrc
 .browserslistrc
 .prettierrc.json
+.nvmrc
 .travis.yml
 .DS_Store
 Thumbs.db

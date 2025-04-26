@@ -36,6 +36,7 @@ jobs:
           .eslintrc
           .prettierrc.json
           .stylelintrc
+          .nvmrc
           composer.json
           composer.lock
           phpunit.xml
