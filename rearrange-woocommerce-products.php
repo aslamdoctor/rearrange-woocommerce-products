@@ -424,26 +424,28 @@ if ( ! class_exists( 'ReWooProducts' ) ) {
 			}
 
 			if ( $checker ) {
-				$term    = get_queried_object();
-				$term_id = $term->term_id;
-				if ( $term && $term_id ) {
-					$meta_key   = 'rwpp_sortorder_' . $term_id;
-					$meta_query = array(
-						'meta_query' => array(
-							'relation' => 'OR',
-							array(
-								'key'     => $meta_key,
-								'compare' => 'EXISTS',
+				$term = get_queried_object();
+				if ( $term && is_a( $term, 'WP_Term' ) ) {
+					$term_id = $term->term_id;
+					if ( $term_id ) {
+						$meta_key   = 'rwpp_sortorder_' . $term_id;
+						$meta_query = array(
+							'meta_query' => array(
+								'relation' => 'OR',
+								array(
+									'key'     => $meta_key,
+									'compare' => 'EXISTS',
+								),
+								array(
+									'key'     => $meta_key,
+									'compare' => 'NOT EXISTS',
+								),
 							),
-							array(
-								'key'     => $meta_key,
-								'compare' => 'NOT EXISTS',
-							),
-						),
-					);
-					$query->set( 'meta_query', $meta_query );
-					$query->set( 'orderby', 'meta_value_num menu_order title' );
-					$query->set( 'order', 'ASC' );
+						);
+						$query->set( 'meta_query', $meta_query );
+						$query->set( 'orderby', 'meta_value_num menu_order title' );
+						$query->set( 'order', 'ASC' );
+					}
 				}
 			}
 		}
