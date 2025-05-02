@@ -7,7 +7,7 @@ Tested up to: 6.8
 Requires PHP: 7.4.0
 License: GPLv3 or later License
 URI: http://www.gnu.org/licenses/gpl-3.0.html
-Stable Tag: 4.3.2
+Stable Tag: 4.3.3
 
 Boost WooCommerce sales with the Rearrange WooCommerce Products plugin. Easily reorder products with a simple drag-and-drop tool!
 
@@ -102,6 +102,11 @@ This will fix the issue.
 5. Shortcut link under Categories section to sort by categories
 
 == ChangeLog ==
+
+= Version 4.3.3 =
+* fixed: Attempt to read property “term_id” on null
+* tested with wordpress version 6.8.1
+* tested with woocommerce version 9.8.3
 
 = Version 4.3.2 =
 * fixed: is_tax was called incorrectly
